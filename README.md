@@ -23,3 +23,5 @@ Project is set up in the subfoler PhotoSharingWebApp/settings.py
 Set DEBUG = True only in development mode
 
 python manage.py runserver // to start the server
+
+
