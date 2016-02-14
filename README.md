@@ -9,7 +9,7 @@ tar xzvf Django-1.8.9.tar.gz
 <br>
 $ cd Django-1.8.9
 <br>
-$ python setup.py install
+$ sudo python setup.py install
 <br>
 
 
