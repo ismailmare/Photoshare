@@ -1,27 +1,16 @@
 # WebDatabaseApp
 
-To download Django
-Use the tar file in the repo
-<br>
+Database setup needs to be done under each computer i think
+
+Database tables set up in database_dump file
+
+I have used Mamp. There is MAMP for windows as well
+
+Index is the file that will run when localhost page is launched first.
 
 
-tar xzvf Django-1.8.9.tar.gz
-<br>
-$ cd Django-1.8.9
-<br>
-$ sudo python setup.py install
-<br>
 
+PHPmyAdmin: http://localhost:8888
+Webpage: http://localhost:8889
 
-You can test your installation by running this command −
-<br>
-$ django-admin.py --version
-<br>
-The version number should be printed if everything is correct
-
-Project is set up in the subfoler PhotoSharingWebApp/settings.py
-Set DEBUG = True only in development mode
-
-python manage.py runserver // to start the server
-
-
+Start Server from MAMP Application
