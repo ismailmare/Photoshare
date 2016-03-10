@@ -1,8 +1,9 @@
-<html>
-    <head>
-        <title>A quick test</title>
-    </head>
+
+
+
+<html> 
     <body>
-        Hello World!
+        <?php $DATE=date(r); ?> <p>
+        Hello ! The time is now <?php echo $DATE ?> <p> 
     </body>
 </html>
