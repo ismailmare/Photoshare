@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once "header.php";
+require_once "include/db.php";
 ?>
 
 <html>

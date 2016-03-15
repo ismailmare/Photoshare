@@ -16,28 +16,28 @@ class DB{
     private $conn; // the connection the oracle database
     
     function __construct($host, $port, $sid, $user, $pass){
-        $username = $user;
-        $password = $pass;
-        $db_conn_string = sprintf("%s:%d/%d",$host,$port,$sid);
+        $this->username = $user;
+        $this->password = $pass;
+        $this->db_conn_string = sprintf("%s:%d/%s",$host,$port,$sid);
     }
     
     public function connect(){
-        $conn = oci_connect($username, $password, $db_conn_string);
-        if(!$conn){
+        $this->conn = oci_connect($this->username, $this->password, $this->db_conn_string);
+        if(!$this->conn){
             $e = oci_error();
             trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
         }
     }
     
     public function disconnect(){
-        oci_close($conn);
+        oci_close($this>conn);
     }
     
     // For now just executes generic statement, but might add more functions for specific
     // statement (i.e, insert, update, delete)
     public function executeStatment($sql_statement){
         //Prepare sql using conn and returns the statement identifier
-	    $stid = oci_parse($conn, $sql_statement);
+	    $stid = oci_parse($this->conn, $sql_statement);
 	    //Execute a statement returned from oci_parse()
 	    $res=oci_execute($stid);
         
