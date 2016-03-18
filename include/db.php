@@ -5,7 +5,7 @@
     * and provides all the methods necessary for interacting with the
     * the oracle database (connect, update, insert, delete, etc.)
     *
-    * @data March 13, 2016
+    * @date March 13, 2016
     *
     */
     
