@@ -46,8 +46,9 @@ class DB{
             $err = oci_error($stid); 
             echo htmlentities($err['message']);
 	    }
-	    else{
-            echo 'Statement Executed.'; }
+	    else {
+            echo 'Statement Executed.'; 
+        }
 	    
         // Commit the changes 
         $r = oci_commit($this->conn);

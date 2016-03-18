@@ -5,6 +5,11 @@ require_once "include/db.php";
 
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -14,43 +19,29 @@ require_once "include/db.php";
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
-
-    <body>
-      <div id="login-overlay" class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-body">
-              <div class="row">
-                  <div class="col-xs-6">
-                      <div class="well">
-                          <form id="loginForm" method="POST">
-                              <div class="form-group">
-                                  <label for="username" class="control-label">Username</label>
-                                  <input type="text" class="form-control" name="username" value="" required="" title="Please enter your username" placeholder="username">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div class="form-group">
-                                  <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" name="password" placeholder="password" value="" required="" title="Please enter your password">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-                              <div class="checkbox">
-                                  <label>
-                                      <input type="checkbox" name="remember" id="remember"> Remember login
-                                  </label>
-                                  <p class="help-block">(if this is a private computer)</p>
-                              </div>
-                              <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Login</button>
-                          </form>
-                      </div>
-                  </div>
-                  <div class="col-xs-6">
-                      <p class="lead">Register now.</p>
-                      <p><a href="signup.php" class="btn btn-info btn-block">Yes please, register now!</a></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      </div>
+    
+    <body background="bgimage.jpg">
+        <div class="container-fluid">
+            <div class="jumbotron" style="background:rgba(0, 0, 0, 0);">
+                <h1 class="col-md-6 col-md-offset-4" style="color:white;">Photo Share</h1> 
+            </div>
+            
+            </div class="row-fluid">
+                <h2 style="color:white;" class ="text-center"> A web-based photo sharing application.</h2>
+            </div>
+            
+            </div class="row-fluid">
+                <div class ="col-md-6 col-md-offset-4" style="height:20px;"></div>
+            </div>
+            
+            <div class="row-fluid">
+                <div class="col-md-6 col-md-offset-5">
+                <p>
+                <button type="button" class="btn btn-primary btn-lg">Sign in</button>
+                <button type="button" class="btn btn-default btn-lg">Register</button>
+                </p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
