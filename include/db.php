@@ -15,14 +15,14 @@ class DB{
     private $db_conn_string; // the database connection string "host:port/sid"
     private $conn; // the connection the oracle database
     
-    function __construct($host, $port, $sid, $user, $pass){
+    function __construct($user, $pass){
         $this->username = $user;
         $this->password = $pass;
-        $this->db_conn_string = sprintf("%s:%d/%s",$host,$port,$sid);
+        $this->db_conn_string = "gwynne.cs.ualberta.ca:1521/CRS";
     }
     
     public function connect(){
-        $this->conn = oci_connect($this->username, $this->password, $this->db_conn_string);
+        $this->conn = oci_new_connect($this->username, $this->password, $this->db_conn_string);        
         if(!$this->conn){
             $e = oci_error();
             trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -47,10 +47,16 @@ class DB{
             echo htmlentities($err['message']);
 	    }
 	    else{
-            echo 'Row inserted';
-	    }
+            echo 'Statement Executed.'; }
 	    
-	    // Free all resources associated with the oracle statement/cursor
+        // Commit the changes 
+        $r = oci_commit($this->conn);
+        if(!$r) {
+            $e = oci_error($this->conn);
+            trigger_error(htmlentities($e['message']), E_USER_ERROR);
+        }
+        
+	    // Free all resources associated with the oracle statement/cursor        
 	    oci_free_statement($stid);
     }
 };
