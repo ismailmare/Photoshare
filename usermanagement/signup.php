@@ -25,7 +25,7 @@
     $num = $newDB->executeStatement('Insert into persons values(\''.$username.'\',\''.$firstname.'\',\''.$lastname.'\',\''.$address.'\',\''.$email.'\',\''.$phone.'\')');
     
     $_SESSION['user_name'] = $username;
-    header("Location: /../home.php");
+    header("Location: /../header.php");
     exit;
 	
 
