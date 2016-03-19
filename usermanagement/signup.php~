@@ -20,11 +20,9 @@
     </head>
     
     <body background="/~imare/include/images/bgimage.jpg" >
-        <div class="container">
-            
+        <div class="container-fluid">
             <form class="form-signin">
             <h2 class="form-signin-heading">Please Register</h2>
-                
                 <div style="float:left;margin-right:20px;">
                     <label for="inputUsername" class="label_defult"> </label> 
                     <input type="username" id="inputUser"name class="form-control" placeholder="Username" data-maxlength='20' data-minlength="6" required autofocus>
@@ -73,13 +71,16 @@
                     <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm" data-maxlength='20' data-minlength="6" required autofocus>
                     <div class="help-block">Minimum of 6 characters</div>
                 </div>
-            
-            
-                <button class="btn btn-lg btn-primary btn-block" onclick="signup.php">Register</button>
-                <button class="btn btn-lg btn-primary btn-block" onclick="index.php">Home Page</button>
+
+                <br style="clear:both;" />
+                <div style="float:left;margin-right:20px;">
+                <button class="btn btn-lg btn-primary" onclick="signup.php">Register</button>
+                </div>
+                
+                <div style="float:left;">
+                <button class="btn btn-lg btn-primary" onclick="index.php">Home Page</button>
+                </div>        
             </form>
-            </center>
-        </div>
         </div>
         
         
@@ -191,5 +192,5 @@ $(document).ready(function() {
     });
 });
 </script>
-    </body>
- </html>
+</body>
+</html>

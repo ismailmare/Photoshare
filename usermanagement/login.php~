@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == true){
+    echo "YO WHAT THE FOK!";
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,29 +24,23 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-	    <link href = "signin.css" rel="stylesheet">
+	    <link href = "/~imare/include/css/signin.css" rel="stylesheet">
     </head>
     
     <body background="/~imare/include/images/bgimage.jpg" >
         <div class="container">
 
-            <form class="form-signin">
+            <form class="form-signin" action="loginAuth.php" method="post">
                 <h2 class="form-signin-heading">Please sign in</h2>
-                <fieldset>
-		  <label for="inputEmail" class="sr-only">Email address</label>
-		  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <center>
+		  <label for="inputUser" class="sr-only">Username</label>
+		  <input type="user" name="inputUser" class="form-control" placeholder="Email address" required autofocus>
 		  <label for="inputPassword" class="sr-only">Password</label>
-		  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		  <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
-		  
-                </fieldset>
+		  <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+		  <button class="btn btn-lg btn-primary" type="submit"
+		  name="uservalidate">Sign in</button>
+                </center>
 	    </form>
-	    fieldset{
-	        width:120px;
-	    }
-
-	</div> <!-- /container -->
-		
-              
+	    </div>            
     </body>
  </html>
