@@ -1,5 +1,5 @@
 <?php
-	$path='~'
+	$path='~imare';
 	require_once "include/db.php";
 	require_once "include/config.php";
 	

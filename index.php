@@ -1,3 +1,4 @@
+<?php require_once "setup.php";?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +19,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
-    
+    pa
     <body background="/~imare/include/images/bgimage.jpg">
         <div class="container-fluid">
             <div class="jumbotron" style="background:rgba(0, 0, 0, 0);">
@@ -36,9 +37,19 @@
             <div class="row-fluid">
                 <div class="col-md-6 col-md-offset-5">
                 <p>
-                <button type="button" class="btn btn-primary btn-lg" onClick="window.open('/~imare/usermanagement/login.html')">Sign in</button>
-                <button type="button" class="btn btn-default btn-lg" onClick="window.open('~imare/usermanagement/signup.html')">Register</button>
-                </p>
+                <button type="button" class="btn btn-primary btn-lg" id="login" >Sign in</button>
+		<script type = "text/javascript">
+			document.getElementById("login").onclick = function (){
+			location.href = "/~imare/usermanagement/login.html";
+			};
+		</script>
+                <button type="button" class="btn btn-default btn-lg" id = "register">Register</button>
+                 <script type = "text/javascript">
+                        document.getElementById("register").onclick = function (){
+                        location.href = "/~imare/usermanagement/signup.html";
+                        };
+		</script>
+		</p>	
                 </div>
             </div>
         </div>
