@@ -18,35 +18,30 @@
 	    <!-- Latest compiled and minified JavaScript -->
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	    <link href = "signin.css" rel="stylesheet">
     </head>
     
     <body background="/~imare/include/images/bgimage.jpg" >
         <div class="container">
-            
-            <form class="form-signin">
-            <h2 class="form-signin-heading">Sign In</h2>
-                
-                <div style="float:left;margin-right:20px;">
-                    <label for="inputUsername" class="label_defult"> </label> 
-                    <input type="username" id="inputUser"name class="form-control" placeholder="Username" data-maxlength='20' required autofocus>
-                </div>
-               
-                <br></br> 
-            
-                <br style="clear:both;" />
-                <div style="float:left;margin-right:20px;">
-                    <label for="inputPassword1" class="label_defult"></label>
-                    <input type="password" id="inputPassword1" class="form-control" placeholder="Password" data-minlength="6" data-maxlength='20' required autofocus>
-                    <div class="help-block">Minimum of 6 characters</div>
-                </div>
 
-                <button class="btn btn-lg btn-primary btn-block" onclick="login.php">Sign In</button>
-                <button class="btn btn-lg btn-primary btn-block" onclick="index.php">Home Page</button>
-            </form>
-            </center>
-        </div>
-        </div>
-        
-        
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <fieldset>
+		  <label for="inputEmail" class="sr-only">Email address</label>
+		  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+		  <label for="inputPassword" class="sr-only">Password</label>
+		  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		  <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+		  
+                </fieldset>
+	    </form>
+	    fieldset{
+	        width:120px;
+	    }
+
+	</div> <!-- /container -->
+		
+              
     </body>
  </html>
