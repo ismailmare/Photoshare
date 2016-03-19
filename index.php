@@ -36,8 +36,8 @@
             <div class="row-fluid">
                 <div class="col-md-6 col-md-offset-5">
                 <p>
-                <button type="button" class="btn btn-primary btn-lg" onClick="window.open('/~imare/usermanagement/login.php')">Sign in</button>
-                <button type="button" class="btn btn-default btn-lg" onClick="window.open('/~imare/usermanagement/signup.php')">Register</button>
+                <button type="button" class="btn btn-primary btn-lg" onClick="window.open('/~imare/usermanagement/login.html')">Sign in</button>
+                <button type="button" class="btn btn-default btn-lg" onClick="window.open('~imare/usermanagement/signup.html')">Register</button>
                 </p>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 	
 	$newDB = new DB("hdc","hughboy69"); 
     $newDB->connect();
-    $newDB->executeStatment("INSERT into users values('ish','bish',NULL)");
+    //$newDB->executeStatement("INSERT into users values('ish','bish',NULL)");
 ?>
 #Here we set up the database with tables
 #Load into browser first thing

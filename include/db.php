@@ -35,7 +35,7 @@ class DB{
     
     // For now just executes generic statement, but might add more functions for specific
     // statement (i.e, insert, update, delete)
-    public function executeStatment($sql_statement){
+    public function executeStatement($sql_statement){
         //Prepare sql using conn and returns the statement identifier
 	    $stid = oci_parse($this->conn, $sql_statement);
 	    //Execute a statement returned from oci_parse()
@@ -58,7 +58,10 @@ class DB{
         }
         
 	    // Free all resources associated with the oracle statement/cursor        
-	    oci_free_statement($stid);
+	    
+        $num = oci_fetch_array($stid,OCI_NUM);
+        oci_free_statement($stid);
+		return array($num,true);
     }
 };
 ?>
