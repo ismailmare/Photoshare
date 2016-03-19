@@ -2,9 +2,6 @@
 
     require_once "/../setup.php";
 	
-	$newDB = new DB("hdc","hughboy69"); 
-    $newDB->connect();
-    
     session_start();
     $username = strtolower(processField($_POST["inputUser"]));
     $password = processField($_POST["inputPassword1"]);
