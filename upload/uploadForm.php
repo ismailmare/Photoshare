@@ -33,7 +33,8 @@ require_once "../header.php";
               <div class="form-group">
               <label for="exampleInputFile">File input</label>
               <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
+              <p class="help-block">Optional: Enter a description for the photo.</p>
+              <textarea class="form-control" rows="3"></textarea>
               </div>
               <div class="checkbox">
               <label>
@@ -46,7 +47,7 @@ require_once "../header.php";
           </div>
 
           <br></br>
-          
+
           <div class="panel panel-primary">
           <div class="panel-heading">Upload Images From a Local Directory</div>
           <div class="panel-body">

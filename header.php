@@ -8,7 +8,9 @@
 		$userstr = " ($user)";
 	}
 
-	echo $userstr;
+	echo '<div class="alert alert-success" style="width:10%; text-align: center; z-index:-6;">
+              <strong>User: </strong>'.$user.' 
+          </div>';
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +47,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="header.php">Home</a>
+            <a class="navbar-brand" href="http://consort.cs.ualberta.ca/~imare/header.php">Home</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
