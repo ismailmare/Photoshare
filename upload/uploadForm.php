@@ -22,13 +22,51 @@ require_once "../header.php";
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
     <body>
-        <label class="control-label">Upload File From Folder</label>
-        <input id="input-folder-1" type="file" class="file-loading" webkitdirectory>
-        <script>
-            $(document).on('ready', function() {
-            $("#input-folder-1").fileinput({
-            browseLabel: 'Select Folder...'});
-        });
-        </script>
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-primary">
+          <div class="panel-heading">Upload Single Image</div>
+          <div class="panel-body">
+            <span>Upload one image stored as a local file, and optionally enter the descriptive/security information of the image.</span>
+            <br></br>
+            <form>
+              <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+              </div>
+              <div class="checkbox">
+              <label>
+              <input type="checkbox"> Check me out
+              </label>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+          </div>
+
+          <br></br>
+          
+          <div class="panel panel-primary">
+          <div class="panel-heading">Upload Images From a Local Directory</div>
+          <div class="panel-body">
+            <span>Upload all image files stored in a local directory.</span><br></br>
+            <form>
+              <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+              </div>
+              <div class="checkbox">
+              <label>
+              <input type="checkbox"> Check me out
+              </label>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
     </body>
 </html>

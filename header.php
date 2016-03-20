@@ -51,9 +51,9 @@
             <ul class="nav navbar-nav">
               <li><a href="">Photos</a></li>
               <li><a href="">Groups</a></li>
-              <li><a href="">Search</a></li>
+              <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
 	      <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>
-	      <li><a href="usermanagement/logout.php">Logout</a></li>
+	      <li><a href="http://consort.cs.ualberta.ca/~imare/usermanagement/logout.php">Logout</a></li>
 	      <li><a href="">Help</a></li>
               <li role="separator" class="divider"></li>
 	      <li class="dropdown">

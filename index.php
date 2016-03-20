@@ -29,8 +29,11 @@ if(isset($_SESSION['user'])){
     <body background="/~imare/include/images/bgimage.jpg">
         <div class="container-fluid">
             <div class="jumbotron" style="background:rgba(0, 0, 0, 0);">
-                <h1 class="col-md-6 col-md-offset-4" style="color:white;">Photo Share</h1> 
-            </div>
+                <!--<h1 class="col-md-6 col-md-offset-4" style="color:white;">Photo Share</h1>--> 
+            	<center>
+		<img src="/~imare/include/images/logoblue.png" alt="" width="600" height="180">
+	    	</center>
+	    </div>
             
             </div class="row-fluid">
                 <h2 style="color:white;" class ="col-md-6 col-md-offset-4"> A web-based photo sharing application.</h2>
