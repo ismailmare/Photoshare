@@ -1,3 +1,6 @@
+<?php
+require_once "../header.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,5 +22,13 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
     <body>
+        <label class="control-label">Upload File From Folder</label>
+        <input id="input-folder-1" type="file" class="file-loading" webkitdirectory>
+        <script>
+            $(document).on('ready', function() {
+            $("#input-folder-1").fileinput({
+            browseLabel: 'Select Folder...'});
+        });
+        </script>
     </body>
 </html>

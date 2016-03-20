@@ -49,13 +49,14 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Photos</a></li>
+              <li><a href="">Photos</a></li>
               <li><a href="">Groups</a></li>
               <li><a href="">Search</a></li>
-	      <li><a href="">Upload</a></li>
+	      <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>
 	      <li><a href="usermanagement/logout.php">Logout</a></li>
 	      <li><a href="">Help</a></li>
-              <li class="dropdown">
+              <li role="separator" class="divider"></li>
+	      <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
