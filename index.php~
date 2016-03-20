@@ -3,7 +3,8 @@ require_once "setup.php";
 session_start();
 if(isset($_SESSION['user_name'])){
     header("Location header.php");
-}?>
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
