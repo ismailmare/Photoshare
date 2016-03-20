@@ -23,51 +23,10 @@ require_once "../header.php";
     </head>
     <body>
       <div class="container">
-        <div class="panel-group">
-          <div class="panel panel-primary">
-          <div class="panel-heading">Upload Single Image</div>
-          <div class="panel-body">
-            <span>Upload one image stored as a local file, and optionally enter the descriptive/security information of the image.</span>
-            <br></br>
-            <form>
-              <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <input type="file" id="exampleInputFile">
-              <p class="help-block">Optional: Enter a description for the photo.</p>
-              <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <div class="checkbox">
-              <label>
-              <input type="checkbox"> Check me out
-              </label>
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-          </div>
-          </div>
-
-          <br></br>
-
-          <div class="panel panel-primary">
-          <div class="panel-heading">Upload Images From a Local Directory</div>
-          <div class="panel-body">
-            <span>Upload all image files stored in a local directory.</span><br></br>
-            <form>
-              <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
-              </div>
-              <div class="checkbox">
-              <label>
-              <input type="checkbox"> Check me out
-              </label>
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-          </div>
-          </div>
-        </div>
+        <center>
+        <a href="uploadSingle.php" class="btn btn-primary btn-lg active" role="button">Upload Single Image</a>
+        <a href="uploadDir.php" class="btn btn-default btn-lg active" role="button">Upload Directory of Images</a> 
+        </center>
       </div>
     </body>
 </html>

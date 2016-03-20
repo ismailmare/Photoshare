@@ -18,7 +18,7 @@
     <div class="panel-body">Search For Images</div> 
     <div class="panel-footer clearfix">
         <div class="pull-right">
-		    <form class="navbar-form navbar-left" role="search">
+		    <form class="navbar-form navbar-right" role="search">
  	  	      <div class="form-group">
         	  	<input type="text" class="form-control" placeholder="Search">
       		      </div>

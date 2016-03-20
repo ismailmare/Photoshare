@@ -40,7 +40,8 @@ if(isset($_SESSION['user'])){
         <div class="container">
 
             <form class="form-signin" action="loginAuth.php" method="post">
-                <h2 class="form-signin-heading">Please sign in</h2>
+                <h1 class="form-signin-heading"><font color="white">Please Sign In</h1>
+		<br></br>
                 <center>
 		  <label for="inputUser" class="sr-only">Username</label>
 		  <input type="user" name="inputUser" class="form-control" placeholder="Email address" required autofocus>

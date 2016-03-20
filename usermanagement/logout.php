@@ -25,14 +25,15 @@
 
             <link href = "/~imare/include/css/signin.css" rel="stylesheet">
     </head>
-	
+	<body role="document" background="/~imare/include/images/bgimage.jpg"> 
     	<div class="container">
  		<div class="jumbotron">
     			<h1>You Have Been Logged Out</h1> 
   			</div>
-				<a href="../index.php" class="btn btn-lg btn-primary btn-block" role"button">Home</a>
-  				<p></p> 
- 				<p></p> 
+				<center>
+				<a href="../index.php" class="btn btn-lg btn-primary " role"button">Home</a>
+ 				</center>
+				<p></p> 
 		</div>
 
 	</div>
