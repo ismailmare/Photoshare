@@ -21,54 +21,42 @@
     
     <body background="/~imare/include/images/bgimage.jpg" >
         <div class="container-fluid">
-            <form class="form-signin">
+            <form class="form-signin" method="post" action="signupAuth.php" id="defaultForm">
             <h2 class="form-signin-heading">Please Register</h2>
                 <div style="float:left;margin-right:20px;">
-                    <label for="inputUsername" class="label_defult"> </label> 
-                    <input type="username" id="inputUser"name class="form-control" placeholder="Username" data-maxlength='20' data-minlength="6" required autofocus>
+                    <input type="username" name="inputUser"name class="form-control" placeholder="Username" data-maxlength='20' data-minlength="6" required autofocus>
                 </div> 
                 <div style="float:left;">
-                    <label for="inputFirstname" class="label_defult"> </label>
-                    <input type="Firstname" id="inputFirstname" class="form-control" placeholder="First Name" data-maxlength='20' required autofocus>
+                    <input type="Firstname" name="inputFirstname" class="form-control" placeholder="First Name" data-maxlength='20' required autofocus>
                 </div>
-                
-                
+
                 <br></br>
                 <br style="clear:both;" />
                 <div style="float:left;margin-right:20px;">
-                    <label for="inputLastname" class="label_defult"> </label>
-                    <input type="Lastname" id="inputLastname" class="form-control" placeholder="Last Name" data-maxlength='20' required autofocus>
+                    <input type="Lastname" name="inputLastname" class="form-control" placeholder="Last Name" data-maxlength='20' required autofocus>
                 </div>
                 <div style="float:left;">
-                    <label for="inputEmail" class="label_defult"> </label>
-                    <input type="Email" id="inputEmail" class="form-control" placeholder="Email" data-maxlength='20' required autofocus>
+                    <input type="Email" name="inputEmail" class="form-control" placeholder="Email" data-maxlength='20' required autofocus>
                 </div>
-            
-            
+
                 <br></br>
-                <br style="clear:both;" />
-                
+                <br style="clear:both;" />    
                 <div style="float:left;margin-right:20px;">
-                    <label for="inputAddress" class="label_defult"> </label>
-                    <input type="Address" id="inputAddress" class="form-control" placeholder="Address" data-maxlength='20' required>
+                    <input type="Address" name="inputAddress" class="form-control" placeholder="Address" data-maxlength='20' required>
                 </div>
-               
                 <div style="float:left;">
-                    <label for="inputPhone" class="label_defult"></label>
-                    <input type="number_format" id="inputPhone" class="form-control" placeholder="Phone" data-maxlength='10' required autofocus>
+                    <input type="number_format" name="inputPhone" class="form-control" placeholder="Phone" data-maxlength='10' required autofocus>
                 </div>
+
                 <br></br>
-            
                 <br style="clear:both;" />
                 <div style="float:left;margin-right:20px;">
-                    <label for="inputPassword1" class="label_defult"></label>
-                    <input type="password" id="inputPassword1" class="form-control" placeholder="Password" data-maxlength='20' data-minlength="6" required autofocus>
+                    <input type="password" name="inputPassword1" class="form-control" placeholder="Password" data-maxlength='20' data-minlength="6" required autofocus>
                     <div class="help-block">Minimum of 6 characters</div>
                 </div>
             
                 <div style="float:left;">
-                    <label for="inputPassword2" class="label_defult"></label>
-                    <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm" data-maxlength='20' data-minlength="6" required autofocus>
+                    <input type="password" name="inputPassword2" class="form-control" placeholder="Confirm" data-maxlength='20' data-minlength="6" required autofocus>
                     <div class="help-block">Minimum of 6 characters</div>
                 </div>
 

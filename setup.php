@@ -7,5 +7,3 @@
     $newDB->connect();
     //$newDB->executeStatement("INSERT into users values('ish','bish',NULL)");
 ?>
-#Here we set up the database with tables
-#Load into browser first thing

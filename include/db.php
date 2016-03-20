@@ -63,5 +63,37 @@ class DB{
         oci_free_statement($stid);
 		return array($num,true);
     }
+	
+
+    public function executeStatement1($sql_statement){
+	
+	    //Prepare sql using conn and returns the statement identifier
+        $stid = oci_parse($this->conn, $sql_statement);
+        //Execute a statement returned from oci_parse()
+        $res=oci_execute($stid);
+
+        //if error, retrieve the error using the oci_error() function & output an error message
+        if (!$res) {
+            $err = oci_error($stid);
+            echo htmlentities($err['message']);
+        }
+        else {
+            echo 'Statement Executed.';
+        }
+
+        // Commit the changes 
+        $r = oci_commit($this->conn);
+        if(!$r) {
+            $e = oci_error($this->conn);
+            trigger_error(htmlentities($e['message']), E_USER_ERROR);
+        }
+
+        // Free all resources associated with the oracle statement/cursor        
+        oci_free_statement($stid);
+
+
+
+	}
+
 };
 ?>

@@ -74,11 +74,11 @@
 
                 <br style="clear:both;" />
                 <div style="float:left;margin-right:20px;">
-                <button class="btn btn-lg btn-primary" onclick="signup.php">Register</button>
+                <button class="btn btn-lg btn-primary" type="submit" name="register">Register</button>
                 </div>
                 
                 <div style="float:left;">
-                <button class="btn btn-lg btn-primary" onclick="index.php">Home Page</button>
+                <button class="btn btn-lg btn-primary" onclick="../index.php">Home Page</button>
                 </div>        
             </form>
         </div>
