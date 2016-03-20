@@ -1,3 +1,16 @@
+<?php
+
+	session_start();
+	require_once "function.php";
+	
+	if (isset($_SESSION['user'])){
+		$user = $_SESSION['user'];
+		$userstr = " ($user)";
+	}
+
+	echo $userstr;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,6 +53,8 @@
               <li><a href="">Groups</a></li>
               <li><a href="">Search</a></li>
 	      <li><a href="">Upload</a></li>
+	      <li><a href="usermanagement/logout.php">Logout</a></li>
+	      <li><a href="">Help</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">

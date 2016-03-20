@@ -9,12 +9,19 @@
     $address = ($_POST["inputAddress"]);
     $phone = ($_POST["inputPhone"]);
     $email = ($_POST["inputEmail"]);
+    $passwordCon = ($_POST["inputPassword2"]);
    
-    $num = $newDB->executeStatement('SELECT user_name FROM users WHERE user_name =\''.$username.'\'');
+    if($password != $passwordCon){
+	$_SESSION['autherror'] = 'passwordNotMatch';
+	header("Location: signup.php");
+	exit;
+    }
 
+    $num = $newDB->executeStatement('SELECT user_name FROM users WHERE user_name =\''.$username.'\'');
+    
     if($num[0]) {
     
-     	$_SESSION['autherror'] = true;
+     	$_SESSION['autherror'] = 'usernameTaken';
      	header("Location: signup.php");
      	exit(); 
     }

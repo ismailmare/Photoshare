@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'usernameTaken'){
+    echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+              <strong>Warning!</strong> Sorry, Username Taken Already.
+          </div></center>';
+
+    session_unset($_SESSION['autherror']);
+}
+else if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'passwordNotMatch'){
+    echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+              <strong>Warning!</strong> Passwords Do Not Match.
+          </div></center>';
+
+    session_unset($_SESSION['autherror']);
+}
+?>>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,20 +38,22 @@
     </head>
     
     <body background="/~imare/include/images/bgimage.jpg" >
+        <center>
         <div class="container-fluid">
-            <form class="form-signin" method="post" action="signupAuth.php" id="defaultForm">
+            <div style="float:left;">
+            <form class="form-signin" method="post" action="signupAuth.php" id="defaultForm" onsubmit="return checkForm(this);">
             <h2 class="form-signin-heading">Please Register</h2>
                 <div style="float:left;margin-right:20px;">
-                    <input type="username" name="inputUser"name class="form-control" placeholder="Username" data-maxlength='20' data-minlength="6" required autofocus>
-                </div> 
-                <div style="float:left;">
-                    <input type="Firstname" name="inputFirstname" class="form-control" placeholder="First Name" data-maxlength='20' required autofocus>
+                    <input type="username" name="inputUser"name class="form-control" placeholder="Username"  required autofocus pattern=".{5,20}" required title="5 to 10 characters">
+                </div>
+		<div style="float:left;"> 
+                    <input type="Firstname" name="inputFirstname" class="form-control" placeholder="First Name" data-maxlength=20 required autofocus >
                 </div>
 
                 <br></br>
                 <br style="clear:both;" />
                 <div style="float:left;margin-right:20px;">
-                    <input type="Lastname" name="inputLastname" class="form-control" placeholder="Last Name" data-maxlength='20' required autofocus>
+                    <input type="Lastname" name="inputLastname" class="form-control" placeholder="Last Name" data-maxlength=20 required autofocus>
                 </div>
                 <div style="float:left;">
                     <input type="Email" name="inputEmail" class="form-control" placeholder="Email" data-maxlength='20' required autofocus>
@@ -44,35 +64,55 @@
                 <div style="float:left;margin-right:20px;">
                     <input type="Address" name="inputAddress" class="form-control" placeholder="Address" data-maxlength='20' required>
                 </div>
-                <div style="float:left;">
-                    <input type="number_format" name="inputPhone" class="form-control" placeholder="Phone" data-maxlength='10' required autofocus>
+		<div style="float:left;">
+                    <input type="number_format" name="inputPhone" class="form-control" placeholder="Phone" data-maxlength='10' required autofocus pattern=".{10,10}" required title="Not a vaid Phone Number">
                 </div>
 
                 <br></br>
                 <br style="clear:both;" />
                 <div style="float:left;margin-right:20px;">
-                    <input type="password" name="inputPassword1" class="form-control" placeholder="Password" data-maxlength='20' data-minlength="6" required autofocus>
+                    <input type="password" name="inputPassword1" class="form-control" placeholder="Password" data-maxlength='20' data-minlength=6 required autofocus pattern=".{6,20}" required title="6 to 20 characters">
                     <div class="help-block">Minimum of 6 characters</div>
                 </div>
-            
-                <div style="float:left;">
-                    <input type="password" name="inputPassword2" class="form-control" placeholder="Confirm" data-maxlength='20' data-minlength="6" required autofocus>
+            	<div style="float:left;">
+                    <input type="password" name="inputPassword2" class="form-control" placeholder="Confirm" data-maxlength='20' data-minlength="6" required autofocus pattern=".{6,20}" required title="6 to 20 characters">
                     <div class="help-block">Minimum of 6 characters</div>
                 </div>
 
                 <br style="clear:both;" />
-                <div style="float:left;margin-right:20px;">
+                <div style="float:left;margin-right:100px;">
                 <button class="btn btn-lg btn-primary" type="submit" name="register">Register</button>
-                </div>
-                
-                <div style="float:left;">
-                <button class="btn btn-lg btn-primary" onclick="../index.php">Home Page</button>
-                </div>        
             </form>
+	    <div style="float:left;">
+
+	    <!--<button class="btn btn-lg btn-primary" onclick="../index.php">Home Page</button>-->	
+	    </div>
+            </div>
+
         </div>
+	</center>
         
         
-        
+
+
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+
+    if(form.inputPassword2.value != form.inputPassword2.value) {
+      alert("Passwords Do Not Match"};
+      form.pwd1.focus();
+      return false
+    return true;
+  }
+
+</script>
+
+
+
+
+   
 <script type="text/javascript">
 $(document).ready(function() {
     $('#defaultForm').bootstrapValidator({

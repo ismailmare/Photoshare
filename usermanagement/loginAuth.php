@@ -8,13 +8,15 @@
     $num = $newDB->executeStatement('SELECT user_name FROM users WHERE user_name =\''.$username.'\' AND password =\''.$password.'\'');
     
     if($num[0]) {
-	$_SESSION['user_name'] = $username;
+	$_SESSION['user'] = $username;
+	echo $_SESSION['user'];
         header("Location: ../header.php");
         exit;
 	}
     else {
         $_SESSION['autherror'] = true;
         header("Location: login.php");
+	exit;
 	}
 ?>
 

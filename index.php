@@ -1,8 +1,7 @@
 <?php 
-require_once "setup.php";
 session_start();
-if(isset($_SESSION['user_name'])){
-    header("Location header.php");
+if(isset($_SESSION['user'])){
+    header("Location: header.php");
 }
 ?>
 

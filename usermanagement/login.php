@@ -1,9 +1,17 @@
 <?php
 session_start();
 if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == true){
-    echo "YO WHAT THE FOK!";
+    echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+              <strong>Warning!</strong> Invalid Username or Password
+          </div></center>';
+
     session_unset($_SESSION['autherror']);
 }
+if(isset($_SESSION['user'])){
+    header("Location ../header.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
