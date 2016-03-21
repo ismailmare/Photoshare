@@ -14,6 +14,9 @@
           <img src="/~imare/include/images/logoblue.png" alt="" width="350" height="150" style="z-index:-5;">
       </center>
       <br></br><br></br>
+      <div class="panel panel-primary">
+      <div class="panel-heading">Search For Pictures</div>
+      <div class="panel-body"></div>
       <form role="form" id="" action="searchdb.php">
           <h1 class="form-signin-heading"></h1>
           <div class="input-group input-group-lg">
@@ -22,7 +25,6 @@
           </div>
 		<div class='checkbox'>
 	  	<label>
-			<div style='float:left;margin-right:20px'>
 				<input type="radio" name="searchby" value="Most-Recent">Most Recent
   				<input type="radio" name="searchby" value="Oldest"> Oldest
 		</label>
@@ -30,6 +32,8 @@
         	<button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
 	
       </form>
+
+      </div>
   </div>
 	
 
