@@ -41,7 +41,7 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
 <body role="document" background="/~imare/include/images/bgimage.jpg">
 <div class="container theme-showcase" role="main">
 
-<nav class="navbar navbar-default" style="top:2px;">
+<nav class="navbar navbar-inverse" style="top:2px;">
 <div class="container">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -50,7 +50,7 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="http://consort.cs.ualberta.ca/~imare/header.php">Home</a>
+    <a class="navbar-brand" href="http://consort.cs.ualberta.ca/~imare/profile.php">Home</a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
@@ -91,3 +91,9 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
    
   </body>
 </html>
+
+
+
+
+
+

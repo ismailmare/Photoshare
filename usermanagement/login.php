@@ -8,7 +8,7 @@ if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == true){
     session_unset($_SESSION['autherror']);
 }
 if(isset($_SESSION['user'])){
-    header("Location ../header.php");
+    header("Location ../profile.php");
     exit();
 }
 

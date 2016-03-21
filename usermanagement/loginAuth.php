@@ -10,7 +10,7 @@
     if($num[0]) {
 	$_SESSION['user'] = $username;
 	echo $_SESSION['user'];
-        header("Location: ../header.php");
+        header("Location: ../profile.php");
         exit;
 	}
     else {

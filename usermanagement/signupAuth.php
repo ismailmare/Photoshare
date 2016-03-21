@@ -31,7 +31,7 @@
 	$newDB->executeStatement($sql);
 	$newDB->executeStatement($sql1);
         $_SESSION['user_name'] = $username;
-        header("Location: ../header.php");
+        header("Location: ../profile.php");
         exit();
     }
     
