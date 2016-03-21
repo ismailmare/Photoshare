@@ -17,27 +17,23 @@ require_once "../header.php";
           <div class="panel-body">
             <span>Upload one image stored as a local file, and optionally enter the descriptive/security information of the image.</span>
             <br></br>
-            <form>
+            <form action="uploadSingleDB.php" method="POST" name="photouploadform">
               <div class="form-group">
               <label for="exampleInputFile">File input</label>
-              <input type="file" id="exampleInputFile">
+              <input type="file" name="image">
               <p class="help-block">Optional: Enter a description for the photo.</p>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" rows="3" name="description"></textarea>
               </div>
-              <div class="checkbox">
-              <label>
-              <div style="float:left;margin-right:20px;">
-              <input type="checkbox"> Public
-              </div>
-              <div style="float:left;">
-              <input type="checkbox"> Private
-              </div>
-              <div style="float:left;margin-left:20px;">
-              <input type="checkbox"> Group
-              </div>
-              </label>
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <label class="radio-inline">
+      				<input type="radio" name="optradio">Public
+    		  		</label>
+    					<label class="radio-inline">
+      				<input type="radio" name="optradio">Private
+    					</label>
+    					<label class="radio-inline">
+      				<input type="radio" name="optradio">Group
+    					</label>
+              <button type="submit" class="btn btn-default" value="SendFile">Submit</button>
             </form>
           </div>
           </div>

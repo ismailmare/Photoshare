@@ -13,22 +13,25 @@
       <center>
           <img src="/~imare/include/images/logoblue.png" alt="" width="350" height="150" style="z-index:-5;">
       </center>
-
-  <div class="panel panel-default">
-    <div class="panel-body">Search For Images</div> 
-    <div class="panel-footer clearfix">
-        <div class="pull-right">
-		    <form class="navbar-form navbar-right" role="search">
- 	  	      <div class="form-group">
-        	  	<input type="text" class="form-control" placeholder="Search">
-      		      </div>
-      		  	<button type="submit" class="btn btn-default">Submit</button>
-  		    </form>
-
-        </div>
-    </div>
-    </div>
+      <br></br><br></br>
+      <form role="form" id="" action="searchdb.php">
+          <h1 class="form-signin-heading"></h1>
+          <div class="input-group input-group-lg">
+              <span class="input-group-addon">Keywords</span>
+              <input type="text" class="form-control" placeholder="Ex: #greatday" name="keywords">
+          </div>
+		<div class='checkbox'>
+	  	<label>
+			<div style='float:left;margin-right:20px'>
+				<input type="radio" name="searchby" value="Most-Recent">Most Recent
+  				<input type="radio" name="searchby" value="Oldest"> Oldest
+		</label>
+        <br></br>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+	
+      </form>
   </div>
+	
 
 
 </html>
