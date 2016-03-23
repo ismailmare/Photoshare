@@ -24,8 +24,8 @@ require_once "../header.php";
     <body>
       <div class="container">
         <center>
-        <a href="uploadSingle.php" class="btn btn-primary btn-lg active" role="button">Upload Single Image</a>
-        <a href="uploadDir.php" class="btn btn-default btn-lg active" role="button">Upload Directory of Images</a> 
+        <a href="uploadSingle.php" class="btn btn-primary btn-lg active" role="button">Upload Images</a>
+        <a href="uploadDir.php" class="btn btn-default btn-lg active" role="button">Update Images</a> 
         </center>
       </div>
     </body>

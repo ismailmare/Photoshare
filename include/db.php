@@ -47,7 +47,6 @@ class DB{
             echo htmlentities($err['message']);
 	    }
 	    else {
-            echo 'Statement Executed.'; 
         }
 	    
         // Commit the changes 
@@ -56,10 +55,10 @@ class DB{
             $e = oci_error($this->conn);
             trigger_error(htmlentities($e['message']), E_USER_ERROR);
         }
-        
-	    // Free all resources associated with the oracle statement/cursor        
-	    
+        	    
         $num = oci_fetch_array($stid,OCI_NUM);
+
+        // Free all resources associated with the oracle statement/cursor 
         oci_free_statement($stid);
 		return array($num,true);
     }
@@ -78,9 +77,7 @@ class DB{
             echo htmlentities($err['message']);
         }
         else {
-            echo 'Statement Executed.';
-        }
-
+	}
         // Commit the changes 
         $r = oci_commit($this->conn);
         if(!$r) {

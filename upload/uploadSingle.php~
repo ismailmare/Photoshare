@@ -11,8 +11,6 @@ require_once "../header.php";
       function show() {document.getElementById('groupEnter').style.display = 'block'; }
       function hide() {document.getElementById('groupEnter').style.display = 'none'; }
      	</script>
-
-      <title>Photo Share - Upload Image</title>
     </head>
 
     <body>
@@ -23,24 +21,20 @@ require_once "../header.php";
           <div class="panel-body">
             <span>Upload one image stored as a local file, and optionally enter the descriptive/security information of the image.</span>
             <br></br>
-            <form action="uploadSingleDB.php" method="POST" name="photouploadform" enctype="multipart/form-data">
+            <form action="uploadSingleDB.php" method="POST" name="photouploadform" id="photoUpload">
+
               <div class="form-group">
               	<label for="image">File input</label>
-              	<input type="file" name="images[]" id ="imageupload" multiple/>
+              	<input type="file" name="image">
               	<p class="help-block">Optional: Enter a description for the photo.</p>
               	<textarea class="form-control" rows="3" name="description"></textarea>
               </div>
-              <label for="subject">Photo Subject (128 Chr Max): </label>
-              <input type="text" id="subject" name="subject" placeholder="Subject" style="width:400px;"><br></br>
-              <label for ="place">Place (128 Char Max): &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
-              <input type="text" id="place" name="place" placeholder="Place" style="width:400px;"><br></br>
-              <label for="image_date">Date Image Taken:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
-              <input type="date" name="image_date" id="image_date" placeholder="Date (Format: MM-DD-YYYY)" style="width:350px;"><br></br>
               <label for="optradio">Photo Permissions</label><br>
-      				<input type="radio" name="optradio" onclick="hide();"/>Public
+      				<input type="radio" name="optradio" onlclick="hide();"/>Public
       				<input type="radio" name="optradio" onclick="hide();"/>Private
-      				<input type="radio" name="optradio" id="group_checked" onclick="show();"/>Group<br>
-              <input type="text" name="groupName" id="groupEnter" style="display: none" placeholder="Group Name">
+      				<input type="radio" name="optradio" id="group_checked" onclick="show();"/>Group 
+              <input type="text" name="groupName" id="groupEnter" style="display: none"><br>
+ 
               <button type="submit" class="btn btn-default" value="SendFile">Submit</button>
             </form>
           </div>
