@@ -1,7 +1,15 @@
 <?php
 
 	require_once "setup.php";
-	require_once "header.php";
+  
+  if(isset($_SESSION['admin'])){
+    require_once "headerAdmin.php";
+  }
+  
+  else{ 
+    require_once "header.php";
+  }
+	
  	$num = $newDB->executeStatement('SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'');
 
 	$user = $num[0];
