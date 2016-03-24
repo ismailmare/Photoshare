@@ -32,15 +32,15 @@ require_once "../header.php";
               </div>
               <label for="subject">Photo Subject (128 Chr Max): </label>
               <input type="text" id="subject" name="subject" placeholder="Subject" style="width:400px;"><br></br>
-              <label for ="place">Place (128 Char Max): &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+              <label for ="place">Place (128 Char Max):</label>
               <input type="text" id="place" name="place" placeholder="Place" style="width:400px;"><br></br>
-              <label for="image_date">Date Image Taken:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+              <label for="image_date">Date Image Taken:</label>
               <input type="date" name="image_date" id="image_date" placeholder="Date (Format: MM-DD-YYYY)" style="width:350px;"><br></br>
               <label for="optradio">Photo Permissions</label><br>
       				<input type="radio" name="optradio" onclick="hide();"/>Public
       				<input type="radio" name="optradio" onclick="hide();"/>Private
       				<input type="radio" name="optradio" id="group_checked" onclick="show();"/>Group<br>
-              <input type="text" name="groupName" id="groupEnter" style="display: none" placeholder="Group Name">
+              <input type="text" name="groupName" id="groupEnter" style="display: none" placeholder="Group ID">
               <button type="submit" class="btn btn-default" value="SendFile">Submit</button>
             </form>
           </div>
