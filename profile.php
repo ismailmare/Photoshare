@@ -1,9 +1,17 @@
-<?php	
+<?php
 
 	require_once "setup.php";
-	require_once "header.php";
- 	$num = $newDB->executeStatement('SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'');
+  
+  if(isset($_SESSION['admin'])){
+    require_once "headerAdmin.php";
+  }
+  
+  else{ 
+    require_once "header.php";
+  }
 	
+ 	$num = $newDB->executeStatement('SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'');
+
 	$user = $num[0];
 	$first = $num[1];
 	$last = $num[2];
@@ -29,9 +37,9 @@
 <div class="container-fluid well span6" style="width:800px; left:5px;">
 	<div class="row-fluid">
         <div class="span2" >
-		    <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+		    <img src="redcircle.png" class="img-circle">
         </div>
-        
+
         <div class="span8">
             <h3><?php echo $user ?></h3>
             <h6>Email: <?php echo $email ?></h6>
@@ -40,11 +48,11 @@
 	    <h6>Phone: <?php echo $phone ?></h6>
             <h6><a href="#">More... </a></h6>
         </div>
-        
+
         <div class="span2">
             <div class="btn-group">
                 <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                    Action 
+                    Action
                     <span class="icon-cog icon-white"></span><span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

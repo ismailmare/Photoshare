@@ -68,3 +68,12 @@ CREATE TABLE images (
    FOREIGN KEY(owner_name) REFERENCES users,
    FOREIGN KEY(permitted) REFERENCES groups
 );
+
+
+
+CREATE TABLE admin(
+     user_name varchar(24),
+    password  varchar(24),
+    date_registered date,
+    primary key(user_name)
+);

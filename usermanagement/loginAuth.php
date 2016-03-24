@@ -6,9 +6,15 @@
     $username = strtolower($_POST["inputUser"]);
     $password = ($_POST["inputPassword"]);
     $num = $newDB->executeStatement('SELECT user_name FROM users WHERE user_name =\''.$username.'\' AND password =\''.$password.'\'');
+    $admin=$newDB->executeStatement('SELECT user_name FROM admin WHERE user_name =\''.$username.'\' AND password =\''.$password.'\'');
     
+
+
     if($num[0]) {
+
 	$_SESSION['user'] = $username;
+    $_SESSION['admin'] = $username;
+
 	echo $_SESSION['user'];
         header("Location: ../profile.php");
         exit;

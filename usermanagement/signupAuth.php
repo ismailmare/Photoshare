@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once "../setup.php";
 
     session_start();
@@ -10,20 +10,24 @@
     $phone = ($_POST["inputPhone"]);
     $email = ($_POST["inputEmail"]);
     $passwordCon = ($_POST["inputPassword2"]);
-   
+
     if($password != $passwordCon){
 	$_SESSION['autherror'] = 'passwordNotMatch';
 	header("Location: signup.php");
 	exit;
     }
 
+    if(($username=="admin") && ($password==admin)){
+        header("Location: ../admin/admin.php");
+    }
+
     $num = $newDB->executeStatement('SELECT user_name FROM users WHERE user_name =\''.$username.'\'');
-    
+
     if($num[0]) {
-    
+
      	$_SESSION['autherror'] = 'usernameTaken';
      	header("Location: signup.php");
-     	exit(); 
+     	exit();
     }
     else {
 	$sql = 'Insert into users values (\''.$username.'\',\''.$password.'\', NULL)';
@@ -34,5 +38,5 @@
         header("Location: ../profile.php");
         exit();
     }
-    
+
 ?>
