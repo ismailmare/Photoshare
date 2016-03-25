@@ -17,8 +17,8 @@
     	}
     	else {
 		$group_id = rand();
-        	$sql = 'Insert into groups values (\''.$group_id.'\',\''.$user.'\',\''.$group_name.'\',SYSDATE';
-        	$newDB->executeStatement($sql);
+        	$sql = 'Insert into groups values (\''.$group_id.'\',\''.$user.'\',\''.$group_name.'\',SYSDATE)';
+        	$newDB->executeStatementAlt($sql);
         	header("Location: groups.php");
         	exit();
     	}

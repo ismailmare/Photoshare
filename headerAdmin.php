@@ -66,7 +66,7 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-      <li><a href="http://consort.cs.ualberta.ca/~imare/photos/photos.php">Photos</a></li>
+      <li><a href="http://consort.cs.ualberta.ca/~imare/display/display.php">Photos</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/groups/groups.php">Groups</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>

@@ -18,7 +18,6 @@
 	$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
 	$row = $newDB->executeStatementAlt($sql);
 	$size = count($row);
-	echo $size;
 
 ?>
 <!DOCTYPE html>
@@ -47,12 +46,12 @@
                     <img src="" class="img-circle">
         </div>
 
-        <div class="span8">
-            <h2>Groups:</h3>
+        <div class="span8" style background="grey">
+            <h2>Groups You Own</h3>
 	    <br></br>
 
 	    <h4 style="text-align:left;float:left;">Group Name</h4> 
-	    <h4 style="text-align:right;float:right;">Group Id</h4> 
+	    <h4 style="text-align:right;float:right right:30px;">Group Id</h4> 
 
 
 	    <h6>
@@ -80,8 +79,6 @@
                 <ul class="dropdown-menu">
                     <li><a href="groupAdd.php"><span class="icon-wrench"></span> Create a New Group</a></li>
                     <li><a href="friendsAdd.php"><span class="icon-trash"></span> Add Friends to a Group</a></li>
-		    <li><a href="groupLeave.php"><span class="icon-trash"></span> Leave a Group</a></li>
-		    <li><a href="groupDelete.php"><span class="icon-trash"></span> Delete Group</a></li>
 
                 </ul>
             </div>

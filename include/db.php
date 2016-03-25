@@ -34,7 +34,7 @@ class DB{
     }
 
     public function disconnect(){
-        oci_close($this>conn);
+        oci_close($this->conn);
     }
     
     // For now just executes generic statement, but might add more functions for specific

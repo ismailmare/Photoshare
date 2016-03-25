@@ -1,16 +1,33 @@
 <?php
 
-	require_once"../homepage.php";
 
 
-	session_start();
+
+        session_start();
+
+
+
+	if(isset($_SESSION['admin'])){
+                require_once "../headerAdmin.php";
+        }
+
+        else{
+                require_once "../header.php";
+        }
+
+        require_once "../setup.php";
+
 	if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'groupnametaken'){
     		echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
               <strong>Warning!</strong> Sorry, Group Name Taken Already.
           </div></center>';
 
-    		session_unset($_SESSION['autherror']);
+    		$_SESSION['autherror']='';
 	}
+
+
+
+
 
 
 ?>
@@ -32,7 +49,7 @@
   <h2>Create a New Group</h2>
     <form class='form-group' action="addGroup.php" method="post">
       <label for="group_name">New Group Name</label>
-      <input type="text" class="form-control" id="group_name" placeholder="" required autofocus>
+      <input type="text" class="form-control" name="group_name" placeholder="" required autofocus>
 
     <br></br>
     <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Create</button>

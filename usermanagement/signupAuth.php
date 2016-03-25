@@ -30,7 +30,7 @@
      	exit();
     }
     else {
-	$sql = 'Insert into users values (\''.$username.'\',\''.$password.'\', NULL)';
+	$sql = 'Insert into users values (\''.$username.'\',\''.$password.'\', SYSDATE)';
         $sql1 = 'Insert into persons values(\''.$username.'\',\''.$firstname.'\',\''.$lastname.'\',\''.$address.'\',\''.$email.'\',\''.$phone.'\')';
 	$newDB->executeStatement($sql);
 	$newDB->executeStatement($sql1);
