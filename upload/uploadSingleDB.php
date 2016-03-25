@@ -13,28 +13,6 @@ the photo is ready for insertion into the database.
 	session_start();
 	require("../setup.php");
 
-	// Generate a photo ID for the image
-	$uniq_photo_id = rand();
-
-	// Get all the current photo ID's that exist
-	$photo_ids = $newDB->executeStatementAlt('SELECT DISTINCT(photo_id) FROM images');
-	foreach($photo_ids as $each){
-		$temp[] = $each['photo_id'];
-	}
-	
-	// Check if the photo ID is unique
-	if(!empty($temp)){
-		$is_unique = false;
-		while(!$is_unique){
-			if(!in_array($uniq_photo_id, $temp)){
-				$is_unique = true;
-			}
-			else{
-				$uniq_photo_id = rand();	
-			}
-		}
-	}
-
 	// Get user information for entering the image into the database
 	$username = $_SESSION['user'];
 
@@ -43,7 +21,15 @@ the photo is ready for insertion into the database.
 	$place = $_POST['place'];
 	$date = $_POST['image_date'];
 	$description = $_POST['description'];
-	$groupID = $_POST['groupID'];
+	if($_POST['permission'] == 'public'){
+		$groupID = "1";
+	}
+	else if($_POST['permission']) == 'private'){
+		$groupID = "2";
+	}
+	else{
+		$groupID = $_POST['groupID'];			
+	}
 	$descriptive_info = array($subject, $place, $date, $description, $groupID);
 	
 	$valid_formats = array("jpg","gif");
@@ -56,6 +42,9 @@ the photo is ready for insertion into the database.
 			if(in_array($file_ext, $valid_formats) == false){
 				$errors[] = "Invalid Image Format";
 			}
+
+			// Get a unique photo ID
+			$uniq_photo_id = genUniqId($newDB);
 
 			// Get the resized thumbnail of the image
 			$thumbnail_blob = makeThumb($_FILES['images']['tmp_name'][$key],$_FILES['images']['type'][$key]);
@@ -84,7 +73,7 @@ the photo is ready for insertion into the database.
 
 		$sql = 'INSERT INTO images (photo_id, owner_name, permitted, subject, place,
 			timing, description, thumbnail, photo) VALUES (:photoid, :ownername,
-			:permitted, :subject, :place, TO_DATE(:datetime, \'MM-DD-YYYY\'), :description, empty_blob(),
+			:permitted, :subject, :place, TO_DATE(:datetime, \'MM/DD/YYYY\'), :description, empty_blob(),
 			empty_blob()) returning thumbnail, photo into :thumbnail, :photo';
 
 		$stid = oci_parse($conn, $sql);
@@ -141,5 +130,31 @@ the photo is ready for insertion into the database.
 		if($imageFormat == 'image/gif') {
 			return imagegif($thumb_image, 'thumbnail.gif');
 		}
+	}
+
+	function genUniqId($db){
+		// Generate a photo ID for the image
+		$uniq_id = rand();
+
+		// Get all the current photo ID's that exist
+		$photo_ids = $db->executeStatementAlt('SELECT DISTINCT(photo_id) FROM images');
+		foreach($photo_ids as $each){
+			$temp[] = $each['photo_id'];
+		}
+	
+		// Check if the photo ID is unique
+		if(!empty($temp)){
+			$is_unique = false;
+			while(!$is_unique){
+				if(!in_array($uniq_id, $temp)){
+				$is_unique = true;
+				}
+				else{
+				$uniq_id = rand();	
+				}
+			}
+		}
+
+		return $uniq_id;
 	}
 ?>
