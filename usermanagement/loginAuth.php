@@ -10,11 +10,14 @@
     
 
 
+
+    if($admin[0]){
+	$_SESSION['admin'] = $username;
+    }
+
     if($num[0]) {
 
 	$_SESSION['user'] = $username;
-    $_SESSION['admin'] = $username;
-
 	echo $_SESSION['user'];
         header("Location: ../profile.php");
         exit;
@@ -22,7 +25,6 @@
     else {
         $_SESSION['autherror'] = true;
         header("Location: login.php");
-	exit;
+	    exit;
 	}
 ?>
-

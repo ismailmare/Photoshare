@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	require_once "setup.php";
   
   if(isset($_SESSION['admin'])){
@@ -9,15 +9,19 @@
   else{ 
     require_once "header.php";
   }
-	
- 	$num = $newDB->executeStatement('SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'');
 
-	$user = $num[0];
-	$first = $num[1];
-	$last = $num[2];
-	$address = $num[3];
-	$email =$num[4];
-	$phone = $num[5];
+	$username = $_SESSION['user'];
+	$sql = 'SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'';
+	
+ 	$num = $newDB->executeStatement($sql);
+
+	$user = $num['USER_NAME'];
+	$first = $num['FIRST_NAME'];
+	$last = $num['LAST_NAME'];
+	$address = $num['ADDRESS'];
+	$email =$num['EMAIL'];
+	$phone = $num['PHONE'];
+	
 
 
 ?>
@@ -37,7 +41,7 @@
 <div class="container-fluid well span6" style="width:800px; left:5px;">
 	<div class="row-fluid">
         <div class="span2" >
-		    <img src="redcircle.png" class="img-circle">
+		    <img src="" class="img-circle">
         </div>
 
         <div class="span8">

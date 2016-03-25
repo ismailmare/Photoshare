@@ -34,7 +34,7 @@
         $sql1 = 'Insert into persons values(\''.$username.'\',\''.$firstname.'\',\''.$lastname.'\',\''.$address.'\',\''.$email.'\',\''.$phone.'\')';
 	$newDB->executeStatement($sql);
 	$newDB->executeStatement($sql1);
-        $_SESSION['user_name'] = $username;
+        $_SESSION['user'] = $username;
         header("Location: ../profile.php");
         exit();
     }

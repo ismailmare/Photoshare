@@ -10,11 +10,23 @@
 
         echo '<div class="container">
 		<div style="float:left;">
-			<div class="alert alert-info" style="width:5%; text-align:center; z-index:-1;position:absolute; top:2px; left:5px;">
+			<div class="alert alert-info" style="width:8%; text-align:left; z-index:-1;position:absolute; top:2px; left:10px;">
               			<strong>User: </strong>'.$user.' 
          	</div>
 		</div>
 		</div>';
+
+
+	echo '<div class="container">
+                <div style="float:left;">
+                        <div class="alert alert-success" style="width:8%; text-align:left; z-index:-1;position:absolute; top:55px; left:10px;">
+                                <strong>Admin </strong> 
+                </div>
+                </div>
+                </div>';
+
+
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +66,7 @@ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-      <li><a href="">Photos</a></li>
+      <li><a href="http://consort.cs.ualberta.ca/~imare/photos/photos.php">Photos</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/groups/groups.php">Groups</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
       <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>

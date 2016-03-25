@@ -29,6 +29,11 @@ class DB{
         }
     }
     
+    public function getConnection(){
+        return $this->conn;
+    }
+    
+    }
     public function disconnect(){
         oci_close($this>conn);
     }
@@ -36,10 +41,12 @@ class DB{
     // For now just executes generic statement, but might add more functions for specific
     // statement (i.e, insert, update, delete)
     public function executeStatement($sql_statement){
+
         //Prepare sql using conn and returns the statement identifier
 	    $stid = oci_parse($this->conn, $sql_statement);
+
 	    //Execute a statement returned from oci_parse()
-	    $res=oci_execute($stid);
+	    $res = oci_execute($stid);
         
         //if error, retrieve the error using the oci_error() function & output an error message
 	    if (!$res) {
@@ -47,29 +54,24 @@ class DB{
             echo htmlentities($err['message']);
 	    }
 	    else {
-        }
-	    
-        // Commit the changes 
-        $r = oci_commit($this->conn);
-        if(!$r) {
-            $e = oci_error($this->conn);
-            trigger_error(htmlentities($e['message']), E_USER_ERROR);
-        }
-        	    
-        $num = oci_fetch_array($stid,OCI_NUM);
 
-        // Free all resources associated with the oracle statement/cursor 
-        oci_free_statement($stid);
-		return array($num,true);
+            // Fetch the results
+            $data = oci_fetch_array($stid, OCI_BOTH);
+
+            // Free all resources associated with the oracle statement/cursor 
+            oci_free_statement($stid);
+            return $data;
+        }
     }
 	
-
-    public function executeStatement1($sql_statement){
+    
+    public function executeStatementAlt($sql_statement){
 	
 	    //Prepare sql using conn and returns the statement identifier
         $stid = oci_parse($this->conn, $sql_statement);
+
         //Execute a statement returned from oci_parse()
-        $res=oci_execute($stid);
+        $res = oci_execute($stid);
 
         //if error, retrieve the error using the oci_error() function & output an error message
         if (!$res) {
@@ -77,20 +79,16 @@ class DB{
             echo htmlentities($err['message']);
         }
         else {
-	}
-        // Commit the changes 
-        $r = oci_commit($this->conn);
-        if(!$r) {
-            $e = oci_error($this->conn);
-            trigger_error(htmlentities($e['message']), E_USER_ERROR);
+
+            // Fetch ALL results
+            $data = oci_fetch_all($stid, $res, null, null,  OCI_FETCHSTATEMENT_BY_ROW + OCI_NUM);
+
+            // Free all resources associated with the oracle statement/cursor        
+            oci_free_statement($stid);
+
+            return $data;
         }
-
-        // Free all resources associated with the oracle statement/cursor        
-        oci_free_statement($stid);
-
-
-
 	}
-
+    
 };
 ?>

@@ -1,6 +1,12 @@
 <?php
+session_start();
+if(isset($_SESSION['admin'])){
+    require_once "../headerAdmin.php";
+  }
 
+  else{
     require_once "../header.php";
+  }
 
 ?>
 

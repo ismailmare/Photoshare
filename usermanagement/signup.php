@@ -38,9 +38,8 @@ else if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'passwordNotM
     </head>
     
     <body background="/~imare/include/images/bgimage.jpg" >
-        <center>
         <div class="container-fluid">
-            <div style="float:left;">
+            <div style="float:center;">
             <form class="form-signin" method="post" action="signupAuth.php" id="defaultForm" onsubmit="return checkForm(this);">
             <h2 class="form-signin-heading">Please Register</h2>
                 <div style="float:left;margin-right:20px;">

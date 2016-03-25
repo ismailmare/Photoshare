@@ -13,8 +13,38 @@ the photo is ready for insertion into the database.
 	require("../setup.php");
 
 	// Generate a photo ID for the image
+	$photo_id_rand = rand(); // NEED TO CHECK IF UNIQUE
 
 	// Get user information for entering the image into the database
+	$username = $_SESSION['user'];
 
-	// For 
+	// Get the descriptive information
+	$subject = $_POST['subject'];
+	$place = $_POST['place'];
+	$date = $_POST['image_date'];
+	$description = $_POST['description'];
+	$groupID = $_POST['groupID'];
+	$descriptive_info = array($subject, $place, $date, $description, $groupID);
+	
+	$valid_formats = array("jpg","gif");
+
+	if(isset($_FILES['images'])){
+		foreach($_FILES['images']['tmp_name'] as $key => $tmp_name){
+			$file_name = $key.$_FILES['images']['name'][$key];
+			$file_size = $_FILES['images']['size'][$key];
+			$file_ext=strtolower(end(explode('.',$_FILES['image']['name'][$key])));
+			if(in_array($file_ext, $valid_formats) == false){
+				$errors[] = "Invalid Image Format";
+			}
+
+			$blobdata = file_get_contents($_FILES['images']['tmp_name'][$key])
+
+		}
+	}
+
+
+	function insertImage($photo_id, $owner_name, $descriptive_info, $thumbnail, $photo){
+		$photo_blob = oci_new_descriptor($)
+	}
+	
 ?>
