@@ -32,8 +32,7 @@ class DB{
     public function getConnection(){
         return $this->conn;
     }
-    
-    }
+
     public function disconnect(){
         oci_close($this>conn);
     }
@@ -86,7 +85,7 @@ class DB{
             // Free all resources associated with the oracle statement/cursor        
             oci_free_statement($stid);
 
-            return $data;
+            return $res;
         }
 	}
     

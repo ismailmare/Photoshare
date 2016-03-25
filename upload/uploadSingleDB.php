@@ -12,8 +12,18 @@ the photo is ready for insertion into the database.
 */
 	require("../setup.php");
 
-	// Generate a photo ID for the image
-	$photo_id_rand = rand(); // NEED TO CHECK IF UNIQUE
+	// Generate a unique photo ID for the image
+	// Get all the current photo ID's that exist
+	$photo_ids = $newDB->executeStatementAlt('SELECT photo_id FROM images');
+	
+	// Check if the photo ID is unique
+	$is_unique = false;
+	while(!$is_unique){
+		$photo_id_rand = rand();
+		if(!in_array($photo_id_rand, $photo_ids)){
+			$is_unique = true;
+		}
+	}
 
 	// Get user information for entering the image into the database
 	$username = $_SESSION['user'];
@@ -43,8 +53,76 @@ the photo is ready for insertion into the database.
 	}
 
 
+	// Close this connection
+	$newDB->disconnect();
+
+	// This function inserts the image and it's descriptive information into the database
 	function insertImage($photo_id, $owner_name, $descriptive_info, $thumbnail, $photo){
-		$photo_blob = oci_new_descriptor($)
+		$photo_blob = oci_new_descriptor($newDB->getConnection(), OCI_D_LOB);
+		$thumbnail_blob = oci_new_descriptor($newDB->getConnection(), OCI_D_LOB);
+
+		$subject = $descriptive_info[0];
+		$place = $descriptive_info[1];
+		$date_time = $descriptive_info[2];
+		$description = $descriptive_info[3];
+		$permitted = $descriptive_info[4];
+
+		$sql = 'INSERT INTO images (photo_id, owner_name, permitted, subject, place,
+			timing, description, thumbnail, photo) VALUES (:photoid, :ownername,
+			:permitted, :subject, :place, :datetime, :description, empty_blob(),
+			empty_blob()) RETURNING thumbnail, photo into :thumbnail, :photo';
+
+		$stid = oci_parse($newDB->getConnection(), $sql);
+
+		oci_bind_by_name($stid, ':photoid', $photo_id);
+		oci_bind_by_name($stid, ':ownername', $owner_name);
+		oci_bind_by_name($stid, ':permittted', $permitted);
+		oci_bind_by_name($stid, ':subject', $subject);
+		oci_bind_by_name($stid, ':place', $place);
+		oci_bind_by_name($stid, ':datetime', $date_time);
+		oci_bind_by_name($stid, ':description', $description);
+
+		$res = oci_execute($stid);
+
+		if(!($thumbnail_blob->save($thumbnail) and $photo_blob->save($photo))){
+			oci_rollback($newDB->getConnection());
+		}
+		else{
+			oci_commit($newDB->getConnection());
+		}
+
+		oci_free_statement($stid);
+
+		$photo_blob->free();
+		$thumbnail_blob->free();
 	}
 	
+	function makeThumb($imagefile,$imageFormat){
+		$image_info = getimagesize($imagefile);
+		$image_width = $image_info[0];
+		$image_height = $image_info[1];
+
+		if($imageFormat == 'image/jpg' || $imageFormat == 'image/jpeg') {
+			$image = imagecreatefromjpeg($imagefile);
+		}
+
+		if($imageFormat == 'image/gif') {
+			$image = imagecreatefromgif($imagefile)
+		}
+
+		// Set dimensions of thumbnail image
+		$thumb_width = $image_width * 0.25;
+		$thumb_height = $image_height * 0.25;
+		$thumb_image = imagecreatetruecolor($thumb_width, $thumb_height);
+
+		imagecopyresampled($thumb_image, $image, 0, 0, 0, 0, $thumb_width, $thumb_height, $image_width, $image_height);
+
+		if($imageFormat == 'image/jpg' || $imageFormat == 'image/jpeg') {
+			return imagejpeg($thumb_image, 'thumbnail.jpg');
+		}
+
+		if($imageFormat == 'image/gif') {
+			return imagegif($thumb_image, 'thumbnail.gif');
+		}
+	}
 ?>

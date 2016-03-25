@@ -16,8 +16,9 @@
 	$username = $_SESSION['user'];
 
 	$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
-	$row = $newDB->executeStatement($sql);
+	$row = $newDB->executeStatementAlt($sql);
 	$size = count($row);
+	echo $size;
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
 
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Photoshare-Groups</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -47,12 +48,24 @@
         </div>
 
         <div class="span8">
-            <h3><?php echo $user ?></h3>
-            <h3>Groups:</h3>
+            <h2>Groups:</h3>
+	    <br></br>
+
+	    <h4 style="text-align:left;float:left;">Group Name</h4> 
+	    <h4 style="text-align:right;float:right;">Group Id</h4> 
+
+
 	    <h6>
-	    <?php 
-		echo "size:".$sizeof;
-		echo $row[0];
+	    <?php
+		echo "<table border='5'; style='width:100%'>\n";
+		foreach ($row as $col) {
+    			echo "<tr>\n";
+    			foreach ($col as $item) {
+        			echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "")."</td>\n";
+    			}
+    			echo "</tr>\n";
+		}
+		echo "</table>\n";
 
 	    ?>
 	    </h6>
@@ -66,7 +79,10 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="groupAdd.php"><span class="icon-wrench"></span> Create a New Group</a></li>
-                    <li><a href="groupDelete.php"><span class="icon-trash"></span> Leave a Group</a></li>
+                    <li><a href="friendsAdd.php"><span class="icon-trash"></span> Add Friends to a Group</a></li>
+		    <li><a href="groupLeave.php"><span class="icon-trash"></span> Leave a Group</a></li>
+		    <li><a href="groupDelete.php"><span class="icon-trash"></span> Delete Group</a></li>
+
                 </ul>
             </div>
         </div>
