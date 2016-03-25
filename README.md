@@ -10,7 +10,7 @@ The following is a list of tasks that will be completed prior to submission of t
 	- [x] User Management Module
 	- [ ] Search Module
 	- [ ] Security Module
-	- [ ] Uploading Module
+	- [x] Uploading Module
   	- [ ] Display Module
   	- [ ] Data Analysis Module
     
