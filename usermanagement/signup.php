@@ -100,9 +100,9 @@ else if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'passwordNotM
   {
 
     if(form.inputPassword2.value != form.inputPassword2.value) {
-      alert("Passwords Do Not Match"};
+      alert("Passwords Do Not Match");
       form.pwd1.focus();
-      return false
+      return false};
     return true;
   }
 

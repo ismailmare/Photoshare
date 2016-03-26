@@ -9,10 +9,10 @@
 	$toDate = ($_POST["toDate"]);
 	$keywords = ($_POST["keywords"]);
 
-	
-	list($y, $m, $d) = explode('-', $toDate);
-	list($y, $m, $d) = explode('-', $fromDate);
-	if(checkdate($m, $d, $y)){
+	list($fm, $fd, $fy) = explode('-', $fromDate);
+	list($tm, $td, $ty) = explode('-', $toDate);
+	if(checkdate($fm, $fd, $fy) && checkdate($tm, $td, $ty)){
+		
   	/*
    	is valid
   	*/

@@ -72,7 +72,7 @@ CREATE TABLE images (
 
 
 CREATE TABLE admin(
-     user_name varchar(24),
+    user_name varchar(24),
     password  varchar(24),
     date_registered date,
     primary key(user_name)

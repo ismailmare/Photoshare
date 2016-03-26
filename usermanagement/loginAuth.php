@@ -13,6 +13,7 @@
 
     if($admin[0]){
 	$_SESSION['admin'] = $username;
+
     }
 
     if($num[0]) {
