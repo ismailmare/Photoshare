@@ -24,13 +24,22 @@ session_start();
       <script>
         $(function() {
         $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker("setDate", new Date());
         });
       </script>
 
       <script>
-      function show() {document.getElementById('groupID').style.display = 'block'; }
-      function hide() {document.getElementById('groupID').style.display = 'none';
-                       document.getElementById('groupID').value=""; }
+      function show() {
+        var groupID = document.getElementById('groupID')
+        groupID.style.display = 'block';
+        groupID.setAttribute("required","true");
+      }
+      function hide() {
+        var groupID = document.getElementById('groupID')
+        groupID.style.display = 'none';
+        groupID.value=""
+        groupID.removeAttribute("required");
+      }
 
       // Validates the date string to ensure proper format
       // Original Javascript code acknowledged here:
@@ -72,7 +81,6 @@ session_start();
         }
 
       }
-
       </script>
 
       <title>Photo Share - Upload Image</title>
@@ -86,7 +94,7 @@ session_start();
               <div class="panel-body">
                 <span>Upload one image stored as a local file, and optionally enter the descriptive/security information of the image.</span>
                 <br></br>
-                <form action="uploadSingleDB.php" method="POST" name="photouploadform" enctype="multipart/form-data" onsubmit = "event.preventDefault(); return validateForm();">
+                <form action="uploadSingleDB.php" method="POST" name="photouploadform" enctype="multipart/form-data" onsubmit = "return validateForm();">
 
                   <div class="form-group">
               	   <label for="image">File input</label>

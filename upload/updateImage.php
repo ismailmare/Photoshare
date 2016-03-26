@@ -1,14 +1,14 @@
 <?php
 
 session_start();
-        require_once "setup.php";
+        require_once "../setup.php";
 
   if(isset($_SESSION['admin'])){
-    require_once "headerAdmin.php";
+    require_once "../headerAdmin.php";
   }
 
   else{
-    require_once "header.php";
+    require_once "../header.php";
   }
 
 ?>
@@ -24,9 +24,8 @@ session_start();
       <div class="container">
         <div class="panel-group">
           <div class="panel panel-primary">
-          <div class="panel-heading">Upload Images From a Local Directory</div>
+          <div class="panel-heading">Update Images</div>
           <div class="panel-body">
-            <span>Upload all image files stored in a local directory.</span><br></br>
             <form>
               <div class="form-group">
               <label for="exampleInputFile">File input</label>

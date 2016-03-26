@@ -21,10 +21,11 @@ the photo is ready for insertion into the database.
 	$place = $_POST['place'];
 	$date = $_POST['image_date'];
 	$description = $_POST['description'];
-	if($_POST['permission'] == 'public'){
+	$groupID = NULL;
+	if(strtolower($_POST['permission']) == 'public'){
 		$groupID = "1";
 	}
-	else if($_POST['permission']) == 'private'){
+	else if(strtolower($_POST['permission']) == 'private'){
 		$groupID = "2";
 	}
 	else{
@@ -32,7 +33,7 @@ the photo is ready for insertion into the database.
 	}
 	$descriptive_info = array($subject, $place, $date, $description, $groupID);
 	
-	$valid_formats = array("jpg","gif");
+	$valid_formats = array("jpeg","jpg","gif");
 
 	if(isset($_FILES['images'])){
 		foreach($_FILES['images']['tmp_name'] as $key => $tmp_name){
