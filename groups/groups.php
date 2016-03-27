@@ -104,7 +104,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="groupAdd.php"><span class="icon-wrench"></span> Create a New Group</a></li>
                     <li><a href="friendsAdd.php"><span class="icon-trash"></span> Add Friends to a Group</a></li>
-
+                    <li><a href="friendsRemove.php"><span class="icon-trash"></span> Remove Friends from a Group</a></li>
                 </ul>
             </div>
         </div>
