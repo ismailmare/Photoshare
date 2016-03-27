@@ -19,11 +19,12 @@
 	else{
 		$_SESSION['autherror'] = 'notchecked';
 		header("Location: delete.php");
+		exit();
 	}
 
 	$_SESSION['success']= 'success';
 	header("Location: display.php");
-
+	exit();
 
 
 
