@@ -4,6 +4,20 @@
 	require_once "../homepage.php";
 	
 	session_start();
+
+
+	if(isset($_SESSION['success']) && $_SESSION['success'] == 'success'){
+                echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
+              <strong>Success!</strong> Picture(s) Deleted.
+          </div></center>';
+
+                $_SESSION['success']='';
+        }
+
+	
+
+
+
 	
 	$user = $_SESSION['user'];
 	

@@ -1,6 +1,6 @@
 <?php
 
-
+	session_start();
 	require_once "../setup.php";
 
 
@@ -12,7 +12,7 @@
                          //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
                          //in your case, it would echo whatever $row['Report ID'] is equivalent to.
 		    
-			$sql = 'DELETE FROM images WHERE photo_id=\''.$check.'\''
+			$sql = 'DELETE FROM images WHERE photo_id=\''.$check.'\'';
 			$newDB->executeStatement($sql);
 		}
 	}
