@@ -1,0 +1,16 @@
+ #nav {
+    width: 75%;
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    list-style: none;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc; 
+    margin-left: 0px;  // looks like bootstrap is putting a left margin on your #nav you may want it off.
+
+}
+#nav li {
+   display: inline-block;
+   text-align:center; 
+}

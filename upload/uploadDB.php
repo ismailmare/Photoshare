@@ -60,7 +60,8 @@ if(isset($_FILES['images'])){
 
 // Close this connection
 $newDB->disconnect();
-
+$_SESSION["success"]='successuploaded';
+header("Location: uploadForm.php");
 // This function inserts the image and it's descriptive information into the database
 function insertImage($conn, $photo_id, $owner_name, $descriptive_info, $thumbnail, $photo){
 	$photo_blob = oci_new_descriptor($conn, OCI_D_LOB);

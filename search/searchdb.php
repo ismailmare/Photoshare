@@ -5,7 +5,7 @@
 	
 	session_start();
 	$user = $_SESSION['user'];
-        $fromDate = ($_POST["fromDate"]);
+    $fromDate = ($_POST["fromDate"]);
 	$toDate = ($_POST["toDate"]);
 	$keywords = ($_POST["keywords"]);
 

@@ -6,7 +6,7 @@
 	session_start();
 
 
-	if(isset($_SESSION['success']) && $_SESSION['success'] == 'success'){
+	if(isset($_SESSION['success']) && $_SESSION['success'] == 'successdeleted'){
                 echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
               <strong>Success!</strong> Picture(s) Deleted.
           </div></center>';
@@ -126,9 +126,11 @@
 			$counter = 0;
 			
                         while (($arr = oci_fetch_row($stmt)) != false) {;
-				$arr1 = oci_fetch_row($stmt2);
+				$photo_id = oci_fetch_row($stmt2);
 		                $pic = $arr['0']->load();
-                		echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover">';
+				$_POST['photo_id']=$photo_id;
+                		echo '<td><p><a href="moreinfo.php"><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" alt="Cover" height="100" width="100">';
+				echo'</a></p>';
 		     		echo '<br></br>';
 				//echo '<input type="checkbox" name="check_list[]" value="'.$arr1['0'].'">';
 	

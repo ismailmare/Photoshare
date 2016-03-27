@@ -22,7 +22,7 @@
 		exit();
 	}
 
-	$_SESSION['success']= 'success';
+	$_SESSION['success']= 'successdeleted';
 	header("Location: display.php");
 	exit();
 

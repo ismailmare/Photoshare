@@ -118,9 +118,9 @@
                         while (($arr = oci_fetch_row($stmt)) != false) {;
                                 $arr1 = oci_fetch_row($stmt2);
                                 $pic = $arr['0']->load();
-                                echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover">';
+                                echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover"> height="100" width="100">';
                                 echo '<br></br>';
-                                echo '<input type="checkbox" name="check_list[]" value="'.$arr1['0'].'">';
+                                echo '<input type="checkbox" name="check_list1[]" value="'.$arr1['0'].'">';
 
 
                                 $counter = $counter+1;

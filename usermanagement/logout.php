@@ -1,7 +1,7 @@
 <?php
 
 	require_once "../function.php";
-	destroySession()	
+	destroySession();
 ?>
 
 <html>
@@ -25,17 +25,16 @@
 
             <link href = "/~imare/include/css/signin.css" rel="stylesheet">
     </head>
+
 	<body role="document" background="/~imare/include/images/bgimage.jpg"> 
     	<div class="container">
- 		<div class="jumbotron">
-    			<h1>You Have Been Logged Out</h1> 
-  			</div>
-				<center>
-				<a href="../index.php" class="btn btn-lg btn-primary " role"button">Home</a>
- 				</center>
-				<p></p> 
+     		<div class="jumbotron">
+        			<h1>You Have Been Logged Out</h1> 
+      		</div>
+			<center>
+			<a href="../index.php" class="btn btn-lg btn-primary " role"button">Home</a>
+			</center>
 		</div>
-
-	</div>
-		
+	</body>
+    
 </html>
