@@ -20,8 +20,21 @@ else if(strtolower($_POST['permission']) == 'private'){
 else{
 	$groupID = $_POST['groupID'];			
 }
+if(!empty($_POST['check_list'])) {
+    		foreach($_POST['check_list'] as $check) {
+            			 	
+				updateImage($newDB, $check, $subject, $place, $date, $description, $groupID);
+			}
+}
+else{
+		$_SESSION['autherror'] = 'notchecked';
+		header("Location: ../display/update.php");
+		exit();
+	}
 
-updateImage($newDB, "346130604", $subject, $place, $date, $description, $groupID);
+	$_SESSION['success']= 'successupdate';
+	header("Location: display.php");
+	exit();
 $newDB->disconnect();
 
 // Update the database record for the image with the new descriptive information

@@ -5,6 +5,15 @@
 
         session_start();
 
+
+        if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'notchecked'){
+                echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+              <strong>Warning!</strong> No Photos Checked.
+          </div></center>';
+
+                $_SESSION['autherror']='';
+        }
+
         $user = $_SESSION['user'];
 
         $image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
