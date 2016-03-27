@@ -47,7 +47,7 @@
 
 <div class="container" style="color:#ffffff">
   <h2>Create a New Group</h2>
-    <form class='form-group' action="addGroup.php" method="post">
+    <form class='form-group' action="groupAddDB.php" method="post">
       <label for="group_name">New Group Name</label>
       <input type="text" class="form-control" name="group_name" placeholder="" required autofocus>
 
