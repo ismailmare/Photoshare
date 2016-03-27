@@ -1,18 +1,18 @@
 <?php
 
-	require_once "../setup.php";
-	require_once "../homepage.php";
-	
-	session_start();
-	
-	$user = $_SESSION['user'];
-	
-	$image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
-	
-	$sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
+        require_once "../setup.php";
+        require_once "../homepage.php";
+
+        session_start();
+
+        $user = $_SESSION['user'];
+
+        $image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
+
+        $sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
 /*
 
-	foreach ($row as $col) {
+        foreach ($row as $col) {
                         echo "<tr>\n";
                         foreach ($col as $item) {
                                 echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "")."</td>\n";
@@ -21,28 +21,31 @@
                 }
                 echo "</table>\n";
 */
-		
-	$conn = $newDB->getConnection();
-	$stmt = oci_parse ($conn, $image);
-	oci_bind_by_name($stmt, ':Owner_name', $user);
-	oci_execute($stmt);
-	
+
+        $conn = $newDB->getConnection();
+        $stmt = oci_parse ($conn, $image);
+        oci_bind_by_name($stmt, ':Owner_name', $user);
+        oci_execute($stmt);
+
         $stmt2 = oci_parse ($conn, $sql);
         oci_bind_by_name($stmt2, ':Owner_name', $user);
         oci_execute($stmt2);
 
-/*	while (($arr = oci_fetch_row($stmt)) != false) {;
-	if(!$arr){
-	    echo "No Pictures to Display";
-	}else{
-	
-		$pic = $arr['0']->load();
-		
-		echo '<img src="Data:image/jpeg;base64,'.base64_encode($pic).'" alt="Cover">';
-	}
-	}
-	oci_close($conn);
+/*      while (($arr = oci_fetch_row($stmt)) != false) {;
+        if(!$arr){
+            echo "No Pictures to Display";
+        }else{
+        
+                $pic = $arr['0']->load();
+                
+                echo '<img src="Data:image/jpeg;base64,'.base64_encode($pic).'" alt="Cover">';
+        }
+        }
+        oci_close($conn);
 */?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -84,7 +87,7 @@
         <div class="row-fluid">
         <div class="span2" >
                     <img src="" class="img-circle">
-        </div>
+                     </div>
 
 
         <div class="span8" style background="grey">
@@ -96,59 +99,44 @@
              
 
 
-	    <form class="" action="update.php" method="post">
+            <form class="" action="../upload/updateImage.php" method="post">
             <?php
                 echo "<table border='5'; style='width:100%'>\n";
-                        
-			echo "<tr>\n";
-			$counter = 0;
-			
+
+                        echo "<tr>\n";
+                        $counter = 0;
+
                         while (($arr = oci_fetch_row($stmt)) != false) {;
-				$arr1 = oci_fetch_row($stmt2);
-		                $pic = $arr['0']->load();
-                		echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover">';
-		     		echo '<br></br>';
-				//echo '<input type="checkbox" name="check_list[]" value="'.$arr1['0'].'">';
-	
+                                $arr1 = oci_fetch_row($stmt2);
+                                $pic = $arr['0']->load();
+                                echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover">';
+                                echo '<br></br>';
+                                echo '<input type="checkbox" name="check_list[]" value="'.$arr1['0'].'">';
 
-				$counter = $counter+1;
-				if ($counter==6){
-					$counter = 0;
-					echo "</tr>\n";
-                
-				}
 
-			}
-        
+                                $counter = $counter+1;
+                                if ($counter==6){
+                                        $counter = 0;
+                                        echo "</tr>\n";
+
+                                }
+
+                        }
+
 
                         echo "</tr>\n";
 
-                
+
                 echo "</table>\n";
 
 
-            
-	   ?>	
 
-           </form>
+           ?>   
+	   <button class="btn btn-lg btn-primary" type="submit"
+                  name="uservalidate">Update</button>
+</form>
 
 
-        </div>
-
-        <div class="span2">
-            <div class="btn-group">
-                <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px" data-toggle="dropdown" href="#">
-                    Action
-                    <span class="icon-cog icon-white"></span><span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="update.php"><span class="icon-wrench"></span> Update Images</a></li>
-                    <li><a href="delete.php"><span class="icon-trash"></span> Delete Images</a></li>
-		 </ul>
-           
-	    </div>
-
-        </div>
 
 
 </div>
@@ -157,4 +145,4 @@
 
 </body>
 </html>
-                                                                                       
+

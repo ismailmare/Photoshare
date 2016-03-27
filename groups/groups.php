@@ -18,8 +18,33 @@
 	$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
 	$row = $newDB->executeStatementAlt($sql);
 	$size = count($row);
-
 ?>
+    <script>
+    function show() {
+      var groupID = document.getElementById('groupID')
+      groupID.style.display = 'block';
+      groupID.setAttribute("required","true");
+    }
+    function hide() {
+      var groupID = document.getElementById('groupID')
+      groupID.style.display = 'none';
+      groupID.value=""
+      groupID.removeAttribute("required");
+    }
+
+     function validateForm()
+    {
+      var image_date = document.getElementById('datepicker').value;
+      if(validDate(image_date)) {
+        return true; 
+      }
+      else{
+        alert("Invalid Date Format!");
+        return false;
+      }
+
+    }
+    </script>
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +76,7 @@
 	    <br></br>
 
 	    <h4 style="text-align:left;float:left;">Group Name</h4> 
-	    <h4 style="text-align:right;float:right right:30px;">Group Id</h4> 
+	    <h4 style="text-align:right;float:right left:30px;">Group Id</h4> 
 
 
 	    <h6>
@@ -72,7 +97,7 @@
 
         <div class="span2">
             <div class="btn-group">
-                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px" data-toggle="dropdown" href="#">
                     Action
                     <span class="icon-cog icon-white"></span><span class="caret"></span>
                 </a>
