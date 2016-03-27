@@ -60,12 +60,7 @@
       <label for="group_name">Friend's Username</label>
       <input type="text" class="form-control" name="user_name" placeholder="" required autofocus>
       <br></br>
-      <label for="group_name">Notice</label>
-      <input type="text" class="form-control" name="notice" height="48" placeholder=""  autofocus>
-	 
-      <div class="checkbox">
-    	<label><input type="checkbox">More Friends</label>
-      </div>
+
     <br></br>
     <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Create</button>
   </form>
