@@ -129,7 +129,7 @@
 				$photo_id = oci_fetch_row($stmt2);
 		                $pic = $arr['0']->load();
 				$_POST['photo_id']=$photo_id;
-                		echo '<td><p><a href="moreinfo.php"><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" alt="Cover" height="100" width="100">';
+                		echo '<td><p><a href="moreinfo.php?photo_id='.$photo_id['0'].'"><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" alt="Cover" height="100" width="100">';
 				echo'</a></p>';
 		     		echo '<br></br>';
 				//echo '<input type="checkbox" name="check_list[]" value="'.$arr1['0'].'">';

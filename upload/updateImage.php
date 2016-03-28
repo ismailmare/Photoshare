@@ -12,23 +12,23 @@ else{
 }
 
 if(isset($_SESSION['success']) && $_SESSION['success'] == 'successupdate'){
-                echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
-              <strong>Success!</strong> Picture(s) Updated.
-          </div></center>';
+  echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
+        <strong>Success!</strong> Picture(s) Updated.
+        </div></center>';
 
-                $_SESSION['success']='';
-        }
+  unset($_SESSION['success']);
+}
 
 if(!empty($_POST['check_list1'])) {
-                foreach($_POST['check_list1'] as $check) {
-			$_POST['check_list1']=$check;
-                }
-        }
-        else{
-                $_SESSION['autherror'] = 'notchecked';
-                header("Location: ../display/update.php");
-                exit();
-        }
+  foreach($_POST['check_list1'] as $check) {
+    $_POST['check_list1']=$check;
+  }
+}
+else{
+  $_SESSION['autherror'] = 'notchecked';
+  header("Location: ../display/update.php");
+  exit();
+}
 
 
 ?>

@@ -36,28 +36,29 @@ if(isset($_SESSION['admin'])){
       <div class="panel panel-primary">
       <div class="panel-heading">Search For Pictures</div>
       <div class="panel-body"></div>
-      <form role="form" id="" action="searchdb.php">
+
+	  <form action="searchdb.php" method="POST" name="searchform" enctype="multipart/form-data">
+
           <h1 class="form-signin-heading"></h1>
           <div class="input-group input-group-lg">
-              <span class="input-group-addon">Keywords</span>
+              <span class="input-group-addon">Keywords &nbsp&nbsp&nbsp&nbsp</span>
               <input type="text" class="form-control" placeholder="Ex: #greatday" name="keywords">
+          </div>
+		  <div class="input-group input-group-lg">
+              <span class="input-group-addon">Time Period: </span>
+              <input class="form-control" placeholder="Starting YYYY-MM-DD" id="date" name="date" type="text">
+			  <input class="form-control" id="date2" name="date2" placeholder="Ending YYYY-MM-DD" type="text">
           </div>
 		<br></br>
 		<div class="panel-heading">Sort By</div>
 		<div class='checkbox'>
 	  	<label>
-				<input type="radio" name="searchby" value="Most-Recent">Most Recent
-  				<input type="radio" name="searchby" value="Oldest"> Oldest
-				<input type="radio" name="searchby" value="Oldest" onclick="show();"> Time Period (MM/DD/YYYY)
+				<input type="radio" name="searchby" value="Most-Recent">Recent First
+  				<input type="radio" name="searchby" value="Oldest"> Oldest First
 				
 		</label>
-		<div class="form-group">
-                 <input type="text" name="fromDate" class = "form-control" id="fromDate" style="display:none;width:400px" placeholder="From Date">
-		 <input type="text" name="fromDate" class = "form-control" id="toDate" style="display:none;width:400px" placeholder="To Date">
-                  </div>
-	
-        
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+		<br></br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
 	
       </form>
 

@@ -47,6 +47,7 @@
   <div class="container theme-showcase" role="main">
     <nav class="navbar navbar-inverse">
       <div class="container">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -56,8 +57,9 @@
           </button>
           <a class="navbar-brand" href="http://consort.cs.ualberta.ca/~imare/profile.php">Home</a>
         </div>
+
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav" id="nav">
+          <ul class="nav navbar-nav">
             <li><a href="http://consort.cs.ualberta.ca/~imare/display/display.php">My Photos</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/groups/groups.php">Groups</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
@@ -68,6 +70,7 @@
           </ul>
         </div>
       </div>
+      
     </nav>
   </div>
 

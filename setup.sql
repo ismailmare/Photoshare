@@ -1,14 +1,22 @@
 /*
  *  File name:  setup.sql
  *  Function:   to create the initial database schema for the CMPUT 391 project: An Online Image Sharing System
- *              Winter, 2016
+ *              Winter, 2016 ; extended by group to add indexes and extra tables
  *  Author:     Prof. Li-Yan Yuan
+ *  Extended By: Hugh Criag, Ismail Mare, Daniel Shin
  */
 DROP TABLE images;
 DROP TABLE group_lists;
 DROP TABLE groups;
 DROP TABLE persons;
 DROP TABLE users;
+DROP TABLE admin;
+DROP TABLE image_views;
+
+DROP INDEX subject_index;
+DROP INDEX place_index;
+DROP INDEX descrip_index;
+
 
 
 CREATE TABLE users (
@@ -69,6 +77,17 @@ CREATE TABLE images (
    FOREIGN KEY(permitted) REFERENCES groups
 );
 
+CREATE INDEX descrip_index ON images(description)
+INDEXTYPE IS CTXSYS.CONTEXT;
+parameters ('sync (on commit)');
+
+CREATE INDEX subject_index ON images(subject)
+INDEXTYPE IS CTXSYS.CONTEXT;
+parameters ('sync (on commit)');
+
+CREATE INDEX place_index ON images(place)
+INDEXTYPE IS CTXSYS.CONTEXT;
+parameters ('sync (on commit)');
 
 
 CREATE TABLE admin(
@@ -77,3 +96,12 @@ CREATE TABLE admin(
     date_registered date,
     primary key(user_name)
 );
+
+CREATE TABLE image_views(
+   image_id int,
+   view_count int,
+   PRIMARY KEY(image_id),
+   FOREIGN KEY(image_id) REFERENCES images
+);
+
+commit;

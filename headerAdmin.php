@@ -58,7 +58,7 @@
         <a class="navbar-brand" href="http://consort.cs.ualberta.ca/~imare/profile.php">Home</a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav" id="nav">
+        <ul class="nav navbar-nav">
           <li><a href="http://consort.cs.ualberta.ca/~imare/display/display.php">My Photos</a></li>
           <li><a href="http://consort.cs.ualberta.ca/~imare/groups/groups.php">Groups</a></li>
           <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>

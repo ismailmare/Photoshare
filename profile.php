@@ -21,9 +21,6 @@
 	$address = $num['ADDRESS'];
 	$email =$num['EMAIL'];
 	$phone = $num['PHONE'];
-	
-
-
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +39,7 @@
   <br><br>
   <div class="container-fluid well span6" style="width:800px; left:5px;">
   	<div class="row-fluid">
+
           <div class="span8">
               <h3><?php echo $user ?></h3>
               <h6>Email: <?php echo $email ?></h6>
@@ -52,7 +50,7 @@
 
           <div class="span2">
               <div class="btn-group">
-                  <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                  <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px" data-toggle="dropdown" href="#">
                       Action
                       <span class="icon-cog icon-white"></span><span class="caret"></span>
                   </a>
@@ -62,11 +60,10 @@
                   </ul>
               </div>
           </div>
-
+          
     </div>
   </div>
 </body>
-
 </html>
 
 

@@ -62,7 +62,7 @@
       <br></br>
 
     <br></br>
-    <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Create</button>
+    <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Remove</button>
   </form>
 </div>
 

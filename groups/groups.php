@@ -18,6 +18,7 @@
 	$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
 	$row = $newDB->executeStatementAlt($sql);
 	$size = count($row);
+
 ?>
     <script>
     function show() {
@@ -65,7 +66,7 @@
 <body>
 
 <br><br>
-<div class="container-fluid well span6" style="width:800px; left:5px;">
+<div class="container-fluid well span6" style="width:1000px; left:5px;">
         <div class="row-fluid">
         <div class="span2" >
                     <img src="" class="img-circle">
@@ -75,17 +76,29 @@
             <h2>Groups You Own</h3>
 	    <br></br>
 
-	    <h4 style="text-align:left;float:left;">Group Name</h4> 
-	    <h4 style="text-align:right;float:right left:30px;">Group Id</h4> 
+	    <h4 style="text-align:left;float:left;margin-right:300px;">Group Name</h4> 
+	    <h4 style="text-align:center;float:left;margin-right:300px;">Group Id</h4> 
+	    <h4 style="text-align:right;float:left;right:500px;">Friends</h4> 
 
-
-	    <h6>
+	    
 	    <?php
 		echo "<table border='5'; style='width:100%'>\n";
 		foreach ($row as $col) {
     			echo "<tr>\n";
     			foreach ($col as $item) {
-        			echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "")."</td>\n";
+        			echo "    <td>".$item."</td>\n";
+				$item = intval($item);	
+				$sql1 = 'SELECT friend_id FROM group_lists WHERE group_id=\''.$item.'\'';
+				$conn = $newDB->getConnection();
+        			$stmt = oci_parse ($conn, $sql1);
+				//oci_bind_by_name($stmt,':ITEM',$item);
+        			oci_execute($stmt);
+				echo '<td>';
+			 	while (($arr = oci_fetch_row($stmt)) != false) {
+					echo $arr['0'];
+					echo ', ';
+				}
+				echo'</td>';
     			}
     			echo "</tr>\n";
 		}
@@ -97,7 +110,7 @@
 
         <div class="span2">
             <div class="btn-group">
-                <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px" data-toggle="dropdown" href="#">
+                <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px; margin-down:5px" data-toggle="dropdown" href="#">
                     Action
                     <span class="icon-cog icon-white"></span><span class="caret"></span>
                 </a>
