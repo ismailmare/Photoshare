@@ -4,8 +4,6 @@ in the database.
 */
 session_start();
 require("../setup.php");
-
-
 // Get the descriptive information
 $subject = $_POST['subject'];
 $place = $_POST['place'];
@@ -23,8 +21,7 @@ else{
 
 // Update all the images selected by the user
 	if(isset($_POST['check_list1'])) {
-    		foreach($_POST['check_list1'] as $check) {
-            			 	
+    		foreach($_POST['check_list1'] as $check) { 
 			updateImage($newDB, $check, $subject, $place, $date, $description, $groupID);
 		}
 	}
@@ -33,22 +30,15 @@ else{
 		header("Location: ../display/update.php");
 		exit();
 	}
-
+	$_SESSION['check_list1']='';
 	$_SESSION['success']= 'successupdate';
-	header("Location: display.php");
+	header("Location: ../display/display.php");
 	$newDB->disconnect();
 	exit();
 // Update the database record for the image with the new descriptive information
 function updateImage($db, $photo_id, $subject, $place, $date, $description, $groupID){
 
-
-	$sql = 'UPDATE images
-			SET permitted = :permitted,
-				subject = :subject,
-				place = :place,
-				timing = TO_DATE(:datetime, \'MM/DD/YYYY\'),
-				description = :description,
-			WHERE photo_id = :image_id';
+	$sql = 'UPDATE images SET permitted = :permitted, subject = :subject, place = :place, timing = TO_DATE(:datetime, \'MM/DD/YYYY\'), description = :description WHERE photo_id = :image_id';
 
 	$stid = oci_parse($db->getConnection(), $sql);
 

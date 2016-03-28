@@ -1,77 +1,50 @@
 <?php
 
-        require_once "../setup.php";
-        require_once "../homepage.php";
+require_once "../setup.php";
+require_once "../homepage.php";
 
-        session_start();
-
-
-        if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'notchecked'){
-                echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
-              <strong>Warning!</strong> No Photos Checked.
-          </div></center>';
-
-                $_SESSION['autherror']='';
-        }
-
-        $user = $_SESSION['user'];
-
-        $image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
-
-        $sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
-/*
-
-        foreach ($row as $col) {
-                        echo "<tr>\n";
-                        foreach ($col as $item) {
-                                echo "    <td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "")."</td>\n";
-                        }
-                        echo "</tr>\n";
-                }
-                echo "</table>\n";
-*/
-
-        $conn = $newDB->getConnection();
-        $stmt = oci_parse ($conn, $image);
-        oci_bind_by_name($stmt, ':Owner_name', $user);
-        oci_execute($stmt);
-
-        $stmt2 = oci_parse ($conn, $sql);
-        oci_bind_by_name($stmt2, ':Owner_name', $user);
-        oci_execute($stmt2);
-
-/*      while (($arr = oci_fetch_row($stmt)) != false) {;
-        if(!$arr){
-            echo "No Pictures to Display";
-        }else{
-        
-                $pic = $arr['0']->load();
-                
-                echo '<img src="Data:image/jpeg;base64,'.base64_encode($pic).'" alt="Cover">';
-        }
-        }
-        oci_close($conn);
-*/?>
+session_start();
 
 
+if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'notchecked'){
+        echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+      <strong>Warning!</strong> No Photos Checked.
+  </div></center>';
 
+        $_SESSION['autherror']='';
+}
 
+$user = $_SESSION['user'];
+
+$image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
+
+$sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
+
+$conn = $newDB->getConnection();
+$stmt = oci_parse ($conn, $image);
+oci_bind_by_name($stmt, ':Owner_name', $user);
+oci_execute($stmt);
+
+$stmt2 = oci_parse ($conn, $sql);
+oci_bind_by_name($stmt2, ':Owner_name', $user);
+oci_execute($stmt2);
+
+?>
 
 <!DOCTYPE html>
-<html>
-
-
-
+<html lang="en">
 
 <head>
   <title>Photoshare-Photos</title>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+  <!-- Optional theme -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

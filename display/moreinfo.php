@@ -123,18 +123,19 @@
                                 $pic = $arr1['0']->load();
                                 echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover" height="300" width="300">';
                                 echo '<br></br>';
-				if($arr2['0']==1){
+				if($arr2['0']=='1'){
 
 					echo '<h4>Permitted: Public<h4>';
 				}
 				else{
 					echo '<h4>Permitted: Private<h4>';
+				}
 				echo '<h4>Subject:      '.$arr3['0'].'<h4>';
 				echo '<h4>Place:      '.$arr4['0'].'<h4>';
 				echo '<h4>When:      '.$arr5['0'].'<h4>';
 				echo '<h4>Description:      '.$arr6['0'].'<h4>';
                         
-				}
+				
 			}
 
 			echo'<center>';

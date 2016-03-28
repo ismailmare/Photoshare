@@ -10,7 +10,7 @@
 	$f_date = $_POST['date2'];
 	$order = $_POST['searchby'];
 	$keywords = ($_POST['keywords']);
-	//$keywords = str_replace(' ','|',$_POST['keywords']);
+	$keywords = str_replace(' ','|',$_POST['keywords']);
 	echo $keywords;
 	echo $f_date;
 	if((!empty($s_date) and !empty($f_date)) or !empty($keywords)){
@@ -21,12 +21,15 @@
 		
 		if(!empty($keywords)) {
 			$conditions .= ' (';
+			$conditions .= " (i.subject LIKE '%$keywords%')";
+			$conditions .= " OR (i.place LIKE '%$keywords%')";
+			$conditions .= " OR (i.description LIKE '%$keywords%')";
 			/*$conditions .= ' (contains('.$keywords.', i.subject) > 0)';
 			$conditions .= ' OR (contains('.$keywords.'i.place) > 0)';
-			$conditions .= ' OR (contains('.$keywords.'i.description) > 0)';*/
-			$conditions .= ' (contains(i.subject,'.$keywords.') > 0)';
+			$conditions .= ' OR (contains('.$keywords.'i.description) > 0)';
+			/*$conditions .= ' (contains(i.subject,'.$keywords.') > 0)';
 			$conditions .= ' OR (contains(i.place,'.$keywords.') > 0)';
-			$conditions .= ' OR (contains(i.description,'.$keywords.') > 0)';
+			$conditions .= ' OR (contains(i.description,'.$keywords.') > 0)';*/
 			$conditions .= ')';
 		}
 		
@@ -52,7 +55,7 @@
 		FROM images i WHERE'.$conditions;
 		
 		$resultArray = $newDB->executeStatementAlt($sql);
-		echo json_encode(array('status'=>true,'rArray'=>$resultArray[0]));
+		echo json_encode(array('status'=>true,$resultArray[0],$resultArray[1]));
 	}
 	else{
 		echo json_encode(array('status'=>false,'message'=>'Please enter a search field'));

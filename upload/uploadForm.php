@@ -18,6 +18,12 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
 
         unset($_SESSION['success']);
 }
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>

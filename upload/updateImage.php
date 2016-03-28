@@ -19,16 +19,16 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successupdate'){
   unset($_SESSION['success']);
 }
 
-if(!empty($_POST['check_list1'])) {
-  foreach($_POST['check_list1'] as $check) {
-    $_POST['check_list1']=$check;
-  }
-}
-else{
+if(empty($_POST['check_list1'])) {
   $_SESSION['autherror'] = 'notchecked';
   header("Location: ../display/update.php");
   exit();
 }
+else{
+  echo $_POST['check_list1'][0];
+  echo $_POST['check_list1'][1];
+}
+
 
 
 ?>
@@ -36,7 +36,6 @@ else{
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -108,7 +107,13 @@ else{
             <input type="radio" name="permission" onclick="hide();" value="public"/>Public
 
             <input type="radio" name="permission" onclick="hide();" value="private" checked/>Private
-
+	          <?php
+            $check_list = array();
+            foreach($_POST['check_list1'] as $photo_id){ 
+              echo '<input type="hidden"  name="check_list1[]" value="'.$photo_id.'"/>'; 
+            }
+            ?>
+	
             <input type="radio" name="permission" id="group_checked" onclick="show();"/>Group
             <input type="text" name="groupID" class = "form-control" id="groupID" style="display:none;width:400px" placeholder="Group ID">
             </div>
