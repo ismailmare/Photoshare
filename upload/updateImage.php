@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once("../setup.php");
 
@@ -15,7 +14,6 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successupdate'){
   echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
         <strong>Success!</strong> Picture(s) Updated.
         </div></center>';
-
   unset($_SESSION['success']);
 }
 
@@ -24,14 +22,8 @@ if(empty($_POST['check_list1'])) {
   header("Location: ../display/update.php");
   exit();
 }
-else{
-  echo $_POST['check_list1'][0];
-  echo $_POST['check_list1'][1];
-}
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,13 +99,14 @@ else{
             <input type="radio" name="permission" onclick="hide();" value="public"/>Public
 
             <input type="radio" name="permission" onclick="hide();" value="private" checked/>Private
-	          <?php
+
+            <?php
             $check_list = array();
             foreach($_POST['check_list1'] as $photo_id){ 
               echo '<input type="hidden"  name="check_list1[]" value="'.$photo_id.'"/>'; 
             }
             ?>
-	
+
             <input type="radio" name="permission" id="group_checked" onclick="show();"/>Group
             <input type="text" name="groupID" class = "form-control" id="groupID" style="display:none;width:400px" placeholder="Group ID">
             </div>

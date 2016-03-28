@@ -2,8 +2,10 @@
 /* This file does the updating of the descriptive information for an image
 in the database.
 */
+
 session_start();
 require("../setup.php");
+
 // Get the descriptive information
 $subject = $_POST['subject'];
 $place = $_POST['place'];
@@ -20,21 +22,22 @@ else{
 }
 
 // Update all the images selected by the user
-	if(isset($_POST['check_list1'])) {
-    		foreach($_POST['check_list1'] as $check) { 
-			updateImage($newDB, $check, $subject, $place, $date, $description, $groupID);
-		}
+if(isset($_POST['check_list1'])) {
+		foreach($_POST['check_list1'] as $check) { 
+		updateImage($newDB, $check, $subject, $place, $date, $description, $groupID);
 	}
-	else{
-		$_SESSION['autherror'] = 'notchecked';
-		header("Location: ../display/update.php");
-		exit();
-	}
-	$_SESSION['check_list1']='';
-	$_SESSION['success']= 'successupdate';
-	header("Location: ../display/display.php");
-	$newDB->disconnect();
+}
+else{
+	$_SESSION['autherror'] = 'notchecked';
+	header("Location: ../display/update.php");
 	exit();
+}
+$_SESSION['check_list1']='';
+$_SESSION['success']= 'successupdate';
+header("Location: ../display/display.php");
+$newDB->disconnect();
+exit()
+
 // Update the database record for the image with the new descriptive information
 function updateImage($db, $photo_id, $subject, $place, $date, $description, $groupID){
 
