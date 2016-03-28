@@ -13,7 +13,7 @@
 
         echo '<div class="container">
 		            <div style="float:left;">
-                <div class="alert alert-info" style="width:8%; text-align:left; z-index:-1;position:absolute; top:2px; left:5px;">
+                <div class="alert alert-info" style="width:8%; text-align:left; z-index:-1;position:absolute; top:2px; left:2px;">
               	<strong>Admin: </strong>'.$user.' 
          	      </div>
 		            </div>

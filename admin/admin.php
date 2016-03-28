@@ -8,6 +8,20 @@ if(isset($_SESSION['admin'])){
     require_once "../header.php";
   }
 
+
+  if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'notchecked'){
+        echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+              <strong>Warning!</strong> No Boxes Checked.
+              </div></center>';
+
+        unset($_SESSION['autherror']);
+}
+
+
+
+
+
+
 ?>
 
 
@@ -19,45 +33,74 @@ if(isset($_SESSION['admin'])){
 <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <script src="../include/js/validDate.js" type="text/javascript"></script>
+  <script>
+    $(function() {
+    $( "#fromDate" ).datepicker();
+    $( "#fromDate" ).datepicker("setDate", new Date());
+    });
+  </script>
+
       <script>
       function show() {document.getElementById('fromDate').style.display = 'block';  
 			document.getElementById('toDate').style.display = 'block'; }
       function hide() {document.getElementById('groupID').style.display = 'none';
                        document.getElementById('groupID').value=""; }
-      </script>
+      
+
+
+      function validateForm()
+  {
+    var image_date = document.getElementById('fromDate').value;
+    var image_date1 = document.getElementById('toDate').value;
+    if(validDate(image_date) && validDate(image_date1)) {
+      return true; 
+    }
+    else{
+      if(!document.getElementById('period').checked){
+	return true;
+      }
+      alert("Invalid Date Format!");
+      return false;
+    }
+
+  }
+
+
+
+	</script>
 <title>Photo Share - Admin Tools</title>
 </head>
  
   <div class = "container">
       <center>
-          <img src="/~imare/include/images/logoblue.png" alt="" width="350" height="150" style="z-index:-5;">
       </center>
       <br></br><br></br>
       <div class="panel panel-primary">
-      <div class="panel-heading">Data Analysis</div>
-      <div class="panel-body"></div>
-      <form role="form" id="" action="searchdb.php">
+      <div class="panel-heading"><h3>Data Analysis</h3></div>
+      <div class="panel-body"></div> <h4>Dsplay number of records for a category.</h4>
+      <form method="post" name="admin" action="adminDB.php" enctype="multipart/form-data" onsubmit ="return validateForm();">
           <h1 class="form-signin-heading"></h1>
-          <div class="input-group input-group-lg">
-              <span class="input-group-addon">Keywords</span>
-              <input type="text" class="form-control" placeholder="Ex: #greatday" name="keywords">
-          </div>
+         
+	     <br></br> 
+             <h4> User</h4> <input type="checkbox" class="form-control" name="user">
+              
+		<h4> Subject</h4><input type="checkbox" class="form-control" name="subject">
+          
+
+          
+
 		<br></br>
-		<div class="panel-heading">Sort By</div>
+		<h4>Time Period:</h4>
 		<div class='checkbox'>
 	  	<label>
-				<input type="radio" name="searchby" value="Most-Recent">Most Recent
-  				<input type="radio" name="searchby" value="Oldest"> Oldest
-				<input type="radio" name="searchby" value="Oldest" onclick="show();"> Time Period (MM/DD/YYYY)
+				<input type="radio" name="searchby" value="Weekly"> Weekly     
+  				<input type="radio" name="searchby" value="Monthly">  Monthly     
+				<input type="radio" name="searchby" value="Yeary"> Yearly     
 				
 		</label>
-		<div class="form-group">
-                 <input type="text" name="fromDate" class = "form-control" id="fromDate" style="display:none;width:400px" placeholder="From Date">
-		 <input type="text" name="fromDate" class = "form-control" id="toDate" style="display:none;width:400px" placeholder="To Date">
-                  </div>
-	
-        
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+		<br></br> 
+        	<center><button class="btn btn-lg btn-primary" style="width:200px" type="submit">Search</button></center>
 	
       </form>
 

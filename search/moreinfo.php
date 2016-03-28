@@ -14,7 +14,7 @@ $subject = 'SELECT subject FROM images WHERE photo_id = '.$photo_id.'';
 $place = 'SELECT place FROM images WHERE photo_id = '.$photo_id.'';
 $when= 'SELECT timing FROM images WHERE photo_id = '.$photo_id.'';
 $description = 'SELECT description FROM images WHERE photo_id = '.$photo_id.'';
-	
+
 $conn = $newDB->getConnection();
 $stmt1 = oci_parse ($conn, $photo);
 $stmt2 = oci_parse ($conn, $permitted);
@@ -22,6 +22,8 @@ $stmt3 = oci_parse ($conn, $subject);
 $stmt4 = oci_parse ($conn, $place);
 $stmt5 = oci_parse ($conn, $when);
 $stmt6 = oci_parse ($conn, $description);
+
+
 oci_execute($stmt1);
 oci_execute($stmt2);
 oci_execute($stmt3);
@@ -63,34 +65,34 @@ oci_execute($stmt6);
       <br></br>
       <h4 style="text-align:left;float:left;"></h4>
       <?php
-  			echo'<center>';
+                        echo'<center>';
         while (($arr1 = oci_fetch_row($stmt1)) != false) {
           $arr2 = oci_fetch_row($stmt2);
-  				$arr3 = oci_fetch_row($stmt3);
-  				$arr4 = oci_fetch_row($stmt4);
-  				$arr5 = oci_fetch_row($stmt5);
-  				$arr6 = oci_fetch_row($stmt6);
+                                $arr3 = oci_fetch_row($stmt3);
+                                $arr4 = oci_fetch_row($stmt4);
+                                $arr5 = oci_fetch_row($stmt5);
+ 				$arr6 = oci_fetch_row($stmt6);
 
           $pic = $arr1['0']->load();
           echo '<td><img src="Data:image/jpeg;base64,'.base64_encode($pic).'" class="img-rounded" "alt="Cover">';
           echo '<br></br>';
-				echo "<table border='5'; style='width:100%'>\n";
-				echo "<tr>\n";
-  				if($arr2['0']=='1'){
-  					echo '<h2>PERMITTED: Public<h2>';
-  				}
-  				else{
-  					echo '<h2>PERMITTED: Private<h2>';
-  				}
+                                echo "<table border='5'; style='width:100%'>\n";
+                                echo "<tr>\n";
+                                if($arr2['0']=='1'){
+                                        echo '<h2>PERMITTED: Public<h2>';
+                                }
+                                else{
+                                        echo '<h2>PERMITTED: Private<h2>';
+                                }
 
-  				echo '<h2>SUBJECT:      '.$arr3['0'].'<h2>';
-  				echo '<h2>PLACE:      '.$arr4['0'].'<h2>';
-  				echo '<h2>WHEN:      '.$arr5['0'].'<h2>';
-  				echo '<h2>DESCRIPTION:      '.$arr6['0'].'<h2>';                      	
-  				echo "</table>\n";
-			}
-	
-  			echo'<center>';
+                                echo '<h2>SUBJECT:      '.$arr3['0'].'<h2>';
+                                echo '<h2>PLACE:      '.$arr4['0'].'<h2>';
+                                echo '<h2>WHEN:      '.$arr5['0'].'<h2>';
+                                echo '<h2>DESCRIPTION:      '.$arr6['0'].'<h2>';
+                                echo "</table>\n";
+                        }
+
+                        echo'<center>';
         ?>
       </div>
     </div>

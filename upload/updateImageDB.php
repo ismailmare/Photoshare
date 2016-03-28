@@ -36,7 +36,7 @@ $_SESSION['check_list1']='';
 $_SESSION['success']= 'successupdate';
 header("Location: ../display/display.php");
 $newDB->disconnect();
-exit()
+exit();
 
 // Update the database record for the image with the new descriptive information
 function updateImage($db, $photo_id, $subject, $place, $date, $description, $groupID){

@@ -10,7 +10,6 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successdeleted'){
   echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
         <strong>Success!</strong> Picture(s) Deleted.
         </div></center>';
-
   unset($_SESSION['success']);
 }
 
@@ -19,7 +18,6 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successupdate'){
   echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
         <strong>Success!</strong> Picture(s) Updated.
         </div></center>';
-
   unset($_SESSION['success']);
 }
 

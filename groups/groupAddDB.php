@@ -16,10 +16,13 @@
         	exit();
     	}
     	else {
+		$notice = 'You Own This Group';
 		$group_id = rand();
         	$sql = 'Insert into groups values (\''.$group_id.'\',\''.$user.'\',\''.$group_name.'\',SYSDATE)';
-        	$newDB->executeStatementAlt($sql);
-        	header("Location: groups.php");
+		$newDB->executeStatementAlt($sql);
+        	$sql1 = 'Insert into group_lists values (\''.$group_id.'\',\''.$user.'\',SYSDATE,\''.$notice.'\')';
+                $newDB->executeStatementAlt($sql1);
+		header("Location: groups.php");
         	exit();
     	}
 

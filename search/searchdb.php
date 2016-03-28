@@ -4,69 +4,73 @@ session_start();
 require_once('../setup.php');
 
 $user = $_SESSION['user'];
-$start_date = $_POST['date'];
-$end_date = $_POST['date2'];
+$start_date = $_POST['start_date'];
+$end_date = $_POST['end_date'];
 $order = $_POST['searchby'];
-$keywords = ($_POST['keywords']);
-$keywords = str_replace(' ','|',$_POST['keywords']);
-//echo $keywords;
-//echo $end_date;
+$keywords = $_POST['keywords'];
+$keywords = str_replace(' ','&',$_POST['keywords']);
 if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){	
 	
 	// If the user has enter entered keywords
-	$seach_cond = '';
+	$search_cond = '';
 	if(!empty($keywords)) {
-		$seach_cond .= ' AND( (contains(i.subject, \''.$keywords.'\', 1) > 0) 
-						 AND (contains(i.place, \''.$keywords.'\', 2) > 0)
-						 AND (contains (i.description, \''.$keywords.'\', 3) > 0) )';
-		/*$seach_cond .= " (i.subject LIKE '%$keywords%')";
-		$seach_cond .= " OR (i.place LIKE '%$keywords%')";
-		$seach_cond .= " OR (i.description LIKE '%$keywords%')";
-		$seach_cond .= ' (contains('.$keywords.', i.subject) > 0)';
-		$seach_cond .= ' OR (contains('.$keywords.'i.place) > 0)';
-		$seach_cond .= ' OR (contains('.$keywords.'i.description) > 0)';
-		$seach_cond .= ' (contains(i.subject,'.$keywords.') > 0)';
-		$seach_cond .= ' OR (contains(i.place,'.$keywords.') > 0)';
-		$seach_cond .= ' OR (contains(i.description,'.$keywords.') > 0)';*/
-		$seach_cond .= ')';
+		$search_cond .= '( contains(i.subject, \''.$keywords.'\', 1) > 0
+						 OR contains(i.place, \''.$keywords.'\', 2) > 0
+						 OR contains (i.description, \''.$keywords.'\', 3) > 0 )';
 	}
 	
 	// If the user has entered a date time frame
 	if((!empty($end_date) && !empty($start_date))) {
-		$seach_cond .= ' AND (i.timing BETWEEN TO_DATE(\''.$start_date.'\', \'YYYY-MM-DD\') AND TO_DATE(\''.$end_date.'\', \'YYYY-MM-DD\'))';
+		if(!empty($keywords))
+			$search_cond .= ' AND';
+		$search_cond .= '(i.timing BETWEEN TO_DATE(\''.$start_date.'\', \'MM/DD/YYYY\') AND TO_DATE(\''.$end_date.'\', \'MM/DD/YYYY\'))';
 	}
-	/*
-	elseif((!empty($end_date) and !empty($start_date)) and empty($keywords)){
-		$seach_cond .= ' AND (i.timing BETWEEN TO_DATE(\''.$start_date.'\', \'YYYY-MM-DD\') AND TO_DATE(\''.$end_date.'\', \'YYYY-MM-DD\'))';
-	} */
+
+	// Conditions to check if the user has permission to view the image
+	// Checks following conditions:
+	// - if image is image is public, then user can view it
+	// - if the image is private and the user is the owner, then the user can view it
+	// - if the the user is part of a group with group_id == i.permitted, then the user can view it
+	$search_cond .= 'AND ( (i.permitted = 1) 
+					OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
+					OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted IN 
+					(SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) )';
 	
+	// if the user has not specified an ordering to the search
 	if($order == 'default' and !empty($keywords)) {
-		$seach_cond .= ' ORDER BY (RANK() OVER (ORDER BY(6*(SCORE(1)+SCORE(2)) + 3*SCORE(3) + SCORE(4)))) DESC';
+		$search_cond .= ' ORDER BY (RANK() OVER (ORDER BY(6*SCORE(1)) + 3*SCORE(2) + SCORE(3))) DESC';
 	}
-	else if($order == 'Most-Recent') {
-		$seach_cond .= ' ORDER BY i.timing DESC';
+
+	// most recent images first
+	else if($order == 'most_recent') {
+		$search_cond .= ' ORDER BY i.timing DESC';
 		
 	}
+
+	// oldest images first
 	else {
-		$seach_cond .= ' ORDER BY i.timing ASC';
+		$search_cond .= ' ORDER BY i.timing ASC';
 	}
 	
 	$sql = 'SELECT i.photo_id
-	FROM images i WHERE'.$seach_cond;
+			FROM images i 
+			WHERE '.$search_cond;
 	
 	$resultArray = $newDB->executeStatementAlt($sql);
-	echo json_encode(array('status'=>true,$resultArray[0],$resultArray[1]));
+	$photo_id_array = array();
+	foreach($resultArray as $key => $value){
+		array_push($photo_id_array, $value[0]);
+	}
+	if(!empty($photo_id_array)){
+		$_SESSION['search_result'] = $photo_id_array;
+		header("Location: searchResult.php");
+	}
+	else{
+		$_SESSION['search_result'] = "empty"; 
+		header("Location: search.php");
+	}
 }
 else{
 	echo json_encode(array('status'=>false,'message'=>'Please enter a search field'));
 }
-
-/*list($fm, $fd, $fy) = explode('-', $fromDate);
-list($tm, $td, $ty) = explode('-', $toDate);
-if(checkdate($fm, $fd, $fy) && checkdate($tm, $td, $ty)){*/
-	
-	/*
-	is valid
-	*/
- ?>
-
+?>
