@@ -21,6 +21,9 @@
 		
 		if(!empty($keywords)) {
 			$conditions .= ' (';
+			/*$conditions .= ' (contains('.$keywords.', i.subject) > 0)';
+			$conditions .= ' OR (contains('.$keywords.'i.place) > 0)';
+			$conditions .= ' OR (contains('.$keywords.'i.description) > 0)';*/
 			$conditions .= ' (contains(i.subject,'.$keywords.') > 0)';
 			$conditions .= ' OR (contains(i.place,'.$keywords.') > 0)';
 			$conditions .= ' OR (contains(i.description,'.$keywords.') > 0)';
