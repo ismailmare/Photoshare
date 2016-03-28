@@ -48,6 +48,14 @@ c391_webproject/
 		update.php
 	admin/
 		admin.php
+	group/
+		groups.php
+		addGroup.php
+		addGroupDB.php
+		friendAdd.php
+		friendAddDb.php
+		friendRemove.php
+		friendRemoveDB.php
 	search/
 		search.php
 		searchdb.php
@@ -65,6 +73,8 @@ c391_webproject/
 		391_Project_Report.txt
 		User Documentation.docx
 		help.php
+		391ScreenShots/
+			31 images
 	index.php
 	header.php
 	headerAdmin.php
