@@ -11,7 +11,7 @@ if(isset($_SESSION['user'])){
     header("Location ../profile.php");
     exit();
 }
-echo '<p>'.$_SERVER['DOCUMENT_ROOT'].'</p>';
+
 ?>
 <!DOCTYPE html>
 <html>

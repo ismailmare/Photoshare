@@ -47,7 +47,7 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
         <div class="form-group">
         <h1 class="form-signin-heading"></h1>
         <div class="input-group input-group-lg">
-          <span class="input-group-addon">Keyword(s):&nbsp&nbsp&nbsp&nbsp</span>
+          <span class="input-group-addon">Keyword(s):&nbsp&nbsp</span>
           <input type="text" class="form-control" placeholder="Ex: greatday" name="keywords">
         </div>
       </div>

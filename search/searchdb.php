@@ -70,7 +70,4 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 		header("Location: search.php");
 	}
 }
-else{
-	echo json_encode(array('status'=>false,'message'=>'Please enter a search field'));
-}
 ?>

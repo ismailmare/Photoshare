@@ -4,19 +4,12 @@ $search_result = $_SESSION['search_result'];
 
 require_once "../setup.php";
 require_once "../homepage.php";
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Photoshare-Photos</title>
+  <title>Photoshare - Search</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,7 +27,6 @@ require_once "../homepage.php";
 </head>
 
 <body>
-
   <br><br>
   <div class="container-fluid well span6" style="width:1500px; left:5px;">
   <div class="row-fluid">
