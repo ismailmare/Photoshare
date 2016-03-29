@@ -8,11 +8,11 @@ Completed:
 The following is a list of tasks that will be completed prior to submission of the project:
 
 	- [x] User Management Module
-	- [ ] Search Module
+	- [x] Search Module
 	- [x] Security Module
 	- [x] Uploading Module
   	- [x] Display Module
-  	- [ ] Data Analysis Module
+  	- [x] Data Analysis Module
     
 ## File Structure:
 
