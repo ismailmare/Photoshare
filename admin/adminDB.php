@@ -1,4 +1,16 @@
 <?php
+
+/*
+This file will query the database
+The result returned to the user will depended on the boxes checked in admin.php
+
+It will then display the results to the user using in a table using html.
+
+collaboration: code based off kyle james ross
+
+
+*/
+
 	session_start();
 	require_once "../setup.php";
 	require_once "../homepage.php"; 	
@@ -23,29 +35,28 @@
                 }
 
 
-		if(isset($_POST['searchby'])){
-
-			if(isset($_POST['searchby']) == 'Weekly'){
-
+		if(isset($_POST['searchby1']) == 'Weekly'){
+				
 				$sql .= ' to_char(i.timing,\'IW\'),';
 				$sql1 .= ' to_char(i.timing,\'IW\'),';	
 		
-			}
+		}
 
-			if(isset($_POST['searchby'])=='Monthly'){
-
+		if(isset($_POST['searchby2'])=='Monthly'){
+				
 				$sql .= ' to_char(i.timing,\'MON\'),';
 				$sql1 .= ' to_char(i.timing,\'MON\'),';
-			}
+		}
 
 
-			if(isset($_POST['searchby']) == 'Yearly'){
+		if(isset($_POST['searchby3']) == 'Yearly'){
 				$sql .= ' EXTRACT(YEAR from i.timing),';
 				$sql1 .= ' EXTRACT(YEAR from i.timing),';
-			}	
+				
+		}	
                 
                 		
-                }
+                
                 $sql1 = rtrim($sql1," ,");
 		$exe .= $sql.' COUNT(i.photo_id)'; 
 		$exe .= " FROM images i";

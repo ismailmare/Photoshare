@@ -15,15 +15,8 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
         <strong>Success!</strong> Picture(s) Uploaded.
         </div>
         </center>';
-
-        unset($_SESSION['success']);
+  unset($_SESSION['success']);
 }
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +66,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   <title>Photo Share - Upload Images</title>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <div class="container">
     <div class="panel-group">
       <div class="panel panel-primary">

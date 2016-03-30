@@ -36,7 +36,7 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 					OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted IN 
 					(SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) )';
 	
-	// if the user has not specified an ordering to the search
+	// if the user has not specified an ordering to the search (DESC for highest rank first)
 	if($order == 'default' and !empty($keywords)) {
 		$search_cond .= ' ORDER BY (RANK() OVER (ORDER BY(6*SCORE(1)) + 3*SCORE(2) + SCORE(3))) DESC';
 	}

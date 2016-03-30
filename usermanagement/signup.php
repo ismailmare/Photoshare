@@ -37,7 +37,7 @@ else if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'passwordNotM
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
     
-    <body background="/~imare/include/images/bgimage.jpg" >
+    <body background="../include/images/bgimage.jpg" >
         <div class="container-fluid">
             <div style="float:center;">
             <form class="form-signin" method="post" action="signupAuth.php" id="defaultForm" onsubmit="return checkForm(this);">

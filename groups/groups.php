@@ -63,7 +63,7 @@
 
 
 
-<body>
+<body background = "../include/images/bgimage.jpg">
 
 <br><br>
 <div class="container-fluid well span6" style="width:1000px; left:5px;">

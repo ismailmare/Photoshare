@@ -26,13 +26,10 @@ require_once "../homepage.php";
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <br><br>
   <div class="container-fluid well span6" style="width:1500px; left:5px;">
   <div class="row-fluid">
-    <div class="span2" >
-    <img src="" class="img-circle">
-    </div>
 
     <div class="span8" style background="grey">
       <h2>Photos</h3>
@@ -40,6 +37,7 @@ require_once "../homepage.php";
       <h4 style="text-align:left;float:left;"></h4> 
       <form class="" action="update.php" method="post">
       <?php
+        session_start();
         echo "<table border='5'; style='width:100%'>\n";
         echo "<tr>\n";
 
@@ -94,11 +92,5 @@ require_once "../homepage.php";
 </div>
 </div>
 
-
 </body>
-
 </html>
-
-<?php
-unset($_SESSION['search_result']);
-?>

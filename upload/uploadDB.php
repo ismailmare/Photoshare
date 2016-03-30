@@ -35,6 +35,7 @@ $descriptive_info = array($subject, $place, $date, $description, $groupID);
 
 $valid_formats = array("jpeg","jpg","gif");
 
+// Code based from http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
 if(isset($_FILES['images'])){
 	foreach($_FILES['images']['tmp_name'] as $key => $tmp_name){
 		$file_name = $key.$_FILES['images']['name'][$key];

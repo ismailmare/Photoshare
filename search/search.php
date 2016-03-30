@@ -36,7 +36,7 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
   <title>Photo Share - Search Image</title>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <div class = "container">
     <br></br><br>
     <div class="panel panel-primary">

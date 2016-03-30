@@ -50,7 +50,7 @@ oci_execute($stmt6);
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
 <br><br>
   <div class="container-fluid well span6" style="width:100%; left:5px;">
     <div class="row-fluid">
