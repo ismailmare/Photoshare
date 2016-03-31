@@ -99,9 +99,10 @@ CREATE TABLE admin(
 
 CREATE TABLE image_views(
    image_id int,
-   view_count int,
+   user_name varchar(24),
    PRIMARY KEY(image_id),
    FOREIGN KEY(image_id) REFERENCES images
+   FOREIGN KEY(user_name) REFERENCES users
 );
 
 commit;

@@ -8,7 +8,7 @@ else{
 }
 
 if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
-  echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center; position: absolute; margin-left: 381px;">
+  echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center; position: absolute; margin-left: 570px;">
         <strong>Sorry. No result(s) for that search.</strong>
         </div></center>';       
   unset($_SESSION['search_result']);
@@ -64,7 +64,8 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
         <label for="searchby">Sort by:</label><br>
         <input type="radio" name="searchby" value="most_recent">Recent First
         <input type="radio" name="searchby" value="oldest"> Oldest First
-        <input type="radio" name="searchby" value="default" checked> None	
+        <input type="radio" name="searchby" value="default" checked> None
+        <input type="radio" name="searchby" value="topfive"> Top Five Most Popular Images
         </div>
         <button class="btn btn-lg btn-primary" type="submit">Search</button>
       </form>

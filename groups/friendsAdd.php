@@ -1,43 +1,27 @@
 <?php
+session_start();
+if(isset($_SESSION['admin'])){
+    require_once "../headerAdmin.php";
+}
+else{
+    require_once "../header.php";
+}
+require_once "../setup.php";
 
-
-
-
-        session_start();
-
-
-
-        if(isset($_SESSION['admin'])){
-                require_once "../headerAdmin.php";
-        }
-	
-	else{
-                require_once "../header.php";
-        }
-
-        require_once "../setup.php";
-
-        if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'error'){
-                echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
-              <strong>Warning!</strong> Sorry, Username or Group Name is Invalid.
+if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'error'){
+    echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+          <strong>Warning!</strong> Sorry, Username or Group Name is Invalid.
           </div></center>';
+    $_SESSION['autherror']='';
+}
 
-                $_SESSION['autherror']='';
-        }
-
-	if(isset($_SESSION['added']) && $_SESSION['added'] == 'added'){
-                echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
-              <strong>Success!</strong> Friend Added.
+if(isset($_SESSION['added']) && $_SESSION['added'] == 'added'){
+    echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
+          <strong>Success!</strong> Friend Added.
           </div></center>';
-
-                $_SESSION['added']='';
-        }
-
-
-
-
+    $_SESSION['added']='';
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +48,7 @@
       <input type="text" class="form-control" name="notice" height="48" placeholder=""  autofocus>
 	 
       <div class="checkbox">
-    	<label><input type="checkbox">More Friends</label>
+      <label><input type="checkbox">More Friends</label>
       </div>
     <br></br>
     <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Create</button>

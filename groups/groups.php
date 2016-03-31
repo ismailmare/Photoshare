@@ -1,26 +1,29 @@
 <?php
+session_start();
+require_once "../setup.php";
+if(isset($_SESSION['admin'])){
+		require_once "../headerAdmin.php";
+}
 
+else{
+		require_once "../header.php";
+}
+$username = $_SESSION['user'];
 
-	session_start();
-        require_once "../setup.php";
-
-  	if(isset($_SESSION['admin'])){
-    		require_once "../headerAdmin.php";
-  	}
-
-  	else{
-    		require_once "../header.php";
-  	}
-
-	
-	$username = $_SESSION['user'];
-
-	$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
-	$row = $newDB->executeStatementAlt($sql);
-	$size = count($row);
-
+$sql = 'SELECT group_name, group_id FROM groups WHERE user_name =\''.$username.'\'';
+$row = $newDB->executeStatementAlt($sql);
+$size = count($row);
 ?>
-    <script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Photoshare - Groups</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script>
     function show() {
       var groupID = document.getElementById('groupID')
       groupID.style.display = 'block';
@@ -33,7 +36,7 @@
       groupID.removeAttribute("required");
     }
 
-     function validateForm()
+    function validateForm()
     {
       var image_date = document.getElementById('datepicker').value;
       if(validDate(image_date)) {
@@ -45,33 +48,15 @@
       }
 
     }
-    </script>
-<!DOCTYPE html>
-<html>
-
-
-
-<head>
-  <title>Photoshare-Groups</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-
-
-
 <body background = "../include/images/bgimage.jpg">
-
 <br><br>
 <div class="container-fluid well span6" style="width:1000px; left:5px;">
         <div class="row-fluid">
-        <div class="span2" >
-                    <img src="" class="img-circle">
-        </div>
-
         <div class="span8" style background="grey">
             <h2>Groups You Own</h3>
 	    <br></br>

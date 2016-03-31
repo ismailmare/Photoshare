@@ -71,7 +71,7 @@ echo '<div class="container">
             <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/usermanagement/logout.php">Logout</a></li>
-      	    <li><a href="http://consort.cs.ualberta.ca/~imare/documentation/help.php">Help/a></li>
+      	    <li><a href="http://consort.cs.ualberta.ca/~imare/documentation/help.php">Help</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </div>

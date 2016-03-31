@@ -1,37 +1,21 @@
 <?php
+session_start();
+if(isset($_SESSION['admin'])){
+    require_once "../headerAdmin.php";
+}
+else{
+    require_once "../header.php";
+}
+require_once "../setup.php";
 
-
-
-
-        session_start();
-
-
-
-	if(isset($_SESSION['admin'])){
-                require_once "../headerAdmin.php";
-        }
-
-        else{
-                require_once "../header.php";
-        }
-
-        require_once "../setup.php";
-
-	if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'groupnametaken'){
-    		echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
-              <strong>Warning!</strong> Sorry, Group Name Taken Already.
+if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'groupnametaken'){
+    echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
+          <strong>Warning!</strong> Sorry, Group Name Taken Already.
           </div></center>';
 
-    		$_SESSION['autherror']='';
-	}
-
-
-
-
-
-
+    $_SESSION['autherror']='';
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

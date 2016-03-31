@@ -9,8 +9,7 @@ $end_date = $_POST['end_date'];
 $order = $_POST['searchby'];
 $keywords = $_POST['keywords'];
 $keywords = str_replace(' ','&',$_POST['keywords']);
-if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){	
-	
+if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	// If the user has enter entered keywords
 	$search_cond = '';
 	if(!empty($keywords)) {
@@ -51,23 +50,35 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	else {
 		$search_cond .= ' ORDER BY i.timing ASC';
 	}
-	
+
 	$sql = 'SELECT i.photo_id
 			FROM images i 
 			WHERE '.$search_cond;
-	
-	$resultArray = $newDB->executeStatementAlt($sql);
-	$photo_id_array = array();
-	foreach($resultArray as $key => $value){
-		array_push($photo_id_array, $value[0]);
+
+}
+
+else{
+	if($order == 'topfive'){
+	$sql = 'SELECT image_id
+			FROM (SELECT image_id, COUNT(*) AS views 
+  				  FROM image_views
+  				  GROUP BY image_id
+                  ORDER BY views DESC)
+			WHERE ROWNUM <= 5';
 	}
-	if(!empty($photo_id_array)){
-		$_SESSION['search_result'] = $photo_id_array;
-		header("Location: searchResult.php");
-	}
-	else{
-		$_SESSION['search_result'] = "empty"; 
-		header("Location: search.php");
-	}
+}
+
+$resultArray = $newDB->executeStatementAlt($sql);
+$photo_id_array = array();
+foreach($resultArray as $key => $value){
+	array_push($photo_id_array, $value[0]);
+}
+if(!empty($photo_id_array)){
+	$_SESSION['search_result'] = $photo_id_array;
+	header("Location: searchResult.php");
+}
+else{
+	$_SESSION['search_result'] = "empty"; 
+	header("Location: search.php");
 }
 ?>

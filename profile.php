@@ -10,6 +10,20 @@
     require_once "header.php";
   }
 
+	if(isset($_SESSION['success']) && $_SESSION['success'] == 'passchanged'){
+  echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
+        <strong>Success!</strong> Password Changed.
+        </div></center>';
+  unset($_SESSION['success']);
+}
+
+	 if(isset($_SESSION['success']) && $_SESSION['success'] == 'updated'){
+  echo '<center> <div class="alert alert-success" style="width:40%; text-align: center;">
+        <strong>Success!</strong> User Information Updated.
+        </div></center>';
+  unset($_SESSION['success']);
+}
+
 	$username = $_SESSION['user'];
 	$sql = 'SELECT user_name,first_name,last_name,address,email,phone FROM persons WHERE user_name =\''.$username.'\'';
 	
@@ -55,8 +69,8 @@
                       <span class="icon-cog icon-white"></span><span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
-                      <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
+                      <li><a href="updateInfo/changePass.php"><span class="icon-wrench"></span> Change Password</a></li>
+		      <li><a href="updateInfo/updateinfo.php"><span class="icon-wrench"></span> Update Information</a></li>
                   </ul>
               </div>
           </div>

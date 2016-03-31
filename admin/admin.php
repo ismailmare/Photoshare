@@ -24,13 +24,6 @@ if(isset($_SESSION['admin'])){
   }
 
 
-  if(isset($_SESSION['autherror']) && $_SESSION['autherror'] == 'notchecked'){
-        echo '<center> <div class="alert alert-warning" style="width:40%; text-align: center;">
-              <strong>Warning!</strong> No Boxes Checked.
-              </div></center>';
-
-        unset($_SESSION['autherror']);
-}
 
 
 

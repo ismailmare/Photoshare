@@ -10,11 +10,11 @@ collaboration: code based off kyle james ross
 
 
 */
-
+	echo '<body background="../include/images/bgimage.jpg" />';
 	session_start();
 	require_once "../setup.php";
 	require_once "../homepage.php"; 	
-	if(isset($_POST['user']) or isset($_POST['subject']) or isset($_POST['period'])){
+	if(isset($_POST['user']) or isset($_POST['subject']) or isset($_POST['searchby1']) or isset($_POST['searchby2']) or isset($_POST['searchby3'])){
 		
 		$sql = "SELECT ";
 		$sql1 = " GROUP BY ";
@@ -80,9 +80,24 @@ collaboration: code based off kyle james ross
 
 
 	else{
-		$_SESSION['autherror']='notchecked';
-		header('Location: admin.php');
-		exit();
+	     $sql ='SELECT COUNT(i.photo_id) FROM images i';
+      
+             $rows = $newDB->executeStatementAlt($sql);
+
+              echo '<div class="container-fluid well span6" style="width:1000px; left:5px;">';
+                echo "<table border='5'; style='width:100%'>\n";
+                echo '<h1>Data Analysis</h1>';
+                foreach($rows as $col){
+			echo "IMAGES";
+                        echo "<tr>\n";
+                        foreach($col as $items){
+                                echo "<td>There Are ".$items." Images</td>\n";
+                        }
+                        echo "</tr>\n";
+
+                }
+                echo "</table>\n";
+
 	}
 
 
