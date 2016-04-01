@@ -9,6 +9,8 @@ Calls deleteDB.php
 
 
 */
+// Accessing the database to determine the photos the user owns and can delete. 
+
 require_once "../setup.php";
 require_once "../homepage.php";
 

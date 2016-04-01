@@ -1,4 +1,13 @@
 <?php
+
+/*
+
+form to add groups to database
+
+
+
+*/
+
 session_start();
 if(isset($_SESSION['admin'])){
     require_once "../headerAdmin.php";

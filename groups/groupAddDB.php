@@ -1,5 +1,14 @@
 <?php
 
+
+/*
+
+Adding friends a group table 
+
+
+
+*/
+
 	require_once "../setup.php";
 	session_start();
 

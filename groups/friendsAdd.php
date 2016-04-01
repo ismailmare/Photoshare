@@ -1,4 +1,14 @@
 <?php
+
+/*
+ Here users can add friends to any groups the user owns.
+ The user is displayed a form, and enters the group name, their friends name
+ and the message they want to send.
+
+
+
+*/
+
 session_start();
 if(isset($_SESSION['admin'])){
     require_once "../headerAdmin.php";

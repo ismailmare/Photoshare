@@ -1,4 +1,14 @@
 <?php
+
+/*
+
+Form for adding images to the database
+
+
+
+*/
+
+
 session_start();
 require_once("../setup.php");
 

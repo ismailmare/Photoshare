@@ -1,5 +1,11 @@
 <?php
+/*
+This file is called from display/update.php file where the user specifies the images
+they wish to update. This file gives the user to input the images new information
+such as subject description, or place. 
+calls updateImageDB.php
 
+*/
 session_start();
 require_once "../setup.php";
 
