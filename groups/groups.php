@@ -1,4 +1,15 @@
 <?php
+
+
+/*
+Here we display the users groups they have created, and the friends in each group
+
+
+
+
+*/
+
+
 session_start();
 require_once "../setup.php";
 if(isset($_SESSION['admin'])){

@@ -1,5 +1,13 @@
 <?php
+/*
 
+We add the friend to the database here.
+If the groupname or the friend name does not exist they
+are returned to the add friends page
+
+
+
+*/
 require_once "../setup.php";
 session_start();
 

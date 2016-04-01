@@ -1,4 +1,10 @@
 <?php
+/*
+Here in this file we display all the images the user logged in has uploaded.
+We require setup.php to acceess the database
+We require homepage.php to show the nav bar and the background image
+
+*/
 
 require_once "../setup.php";
 require_once "../homepage.php";

@@ -1,5 +1,12 @@
 <?php
 
+/*
+
+We remove the friend from the users group_list table.
+
+
+*/
+
         require_once "../setup.php";
         session_start();
 

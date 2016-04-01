@@ -1,4 +1,14 @@
 <?php
+/*
+In this file we give more information about a file the user has clicked on in display.php
+
+The file name is set through $_GET from display.php
+We then display more information about the photo
+
+
+*/
+
+
 
 require_once "../setup.php";
 require_once "../homepage.php";

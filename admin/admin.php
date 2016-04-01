@@ -13,7 +13,7 @@ Uses post in the form
 
 
 
-
+//Starting the session to get information like the username of the person logged in.
 session_start();
 if(isset($_SESSION['admin'])){
     require_once "../headerAdmin.php";
@@ -28,7 +28,9 @@ if(isset($_SESSION['admin'])){
 
 
 
+// The function in script uses datepicker to set the date in the specified fields
 
+// Also the js function show is used to hide and show html input fields if a checkbox has been checked.
 
 ?>
 
@@ -42,6 +44,7 @@ if(isset($_SESSION['admin'])){
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
        <script src="../include/js/validDate.js" type="text/javascript"></script>
+  
   <script>
     $(function() {
     $( "#fromDate" ).datepicker();

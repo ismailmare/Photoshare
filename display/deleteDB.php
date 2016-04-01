@@ -1,5 +1,10 @@
 <?php
+/*
+Here we access the database and delete the photo that is sent through the url using $_POST
+on sucess the user will be returned to displau.php with an success message
+If there is an error the user will be returned to delete.php with an error message
 
+*/
 session_start();
 require_once "../setup.php";
 

@@ -1,4 +1,13 @@
 <?php
+
+/*
+
+Form to remove friends from groups
+calls friendsRemoveDB.php
+
+
+*/
+
 session_start();
 if(isset($_SESSION['admin'])){
     require_once "../headerAdmin.php";

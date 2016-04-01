@@ -1,5 +1,16 @@
 <?php
 
+
+/*This is the user doc for the project
+Here we outline the required elements of the user doc, which include
+how to install our source code and website and how to use website, and take advantage of each of the modules.
+
+
+
+*/
+
+
+
 	require_once("../homepage.php");
 
 
@@ -145,10 +156,12 @@
 <img src="391ScreenShots/error2.png" alt="Mountain View" style="width:1000px;height:400px;">
 <br><br>
 <h4>Images: Images have a unique owner in the database. Each image can only be viewed by users who have permission to see the image. For example the user who views the picture is in the same group as the user who uploades the image. Or the image can be set to public.</h4>
+
+
 <h3> Data Analysis Module </h3>
-<h4>If the user logged in, is an admin, they will have the ability to access admin tools where they can do searches on images and users. They can also view some analytics about</h4>
+<h4>If the user logged in, is an admin, they will have the ability to access admin tools where they can do searches on the amount of images uploaded by a users or images uploaded by subject name. They can view this imformation by weekly, monthly, or yearly.</h4>
 <br><br>
-<img src="391ScreenShots/moreinfo.png" alt="Mountain View" style="width:1000px;height:400px;">
+<img src="391ScreenShots/datanalysis.png" alt="Mountain View" style="width:1000px;height:400px;">
 <p> The owner of this image is the username 'ish', and from the tag at the top left, it is clear this user is an admin</p>
 <br><br>
 

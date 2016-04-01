@@ -1,4 +1,14 @@
 <?php
+
+/*
+
+In this file we output the users images and give the user the option to update any number
+of images at once
+We then call upload/updateImage.php to allow the user to enter information for the photo(s)
+And from there we update the database
+
+
+*/
 require_once "../setup.php";
 require_once "../homepage.php";
 
