@@ -77,16 +77,13 @@ CREATE TABLE images (
    FOREIGN KEY(permitted) REFERENCES groups
 );
 
-CREATE INDEX descrip_index ON images(description)
-INDEXTYPE IS CTXSYS.CONTEXT;
+CREATE INDEX descrip_index ON images(description) INDEXTYPE IS CTXSYS.CONTEXT;
 parameters ('sync (on commit)');
 
-CREATE INDEX subject_index ON images(subject)
-INDEXTYPE IS CTXSYS.CONTEXT;
+CREATE INDEX subject_index ON images(subject) INDEXTYPE IS CTXSYS.CONTEXT;
 parameters ('sync (on commit)');
 
-CREATE INDEX place_index ON images(place)
-INDEXTYPE IS CTXSYS.CONTEXT;
+CREATE INDEX place_index ON images(place) INDEXTYPE IS CTXSYS.CONTEXT;
 parameters ('sync (on commit)');
 
 
@@ -100,9 +97,11 @@ CREATE TABLE admin(
 CREATE TABLE image_views(
    image_id int,
    user_name varchar(24),
-   PRIMARY KEY(image_id),
-   FOREIGN KEY(image_id) REFERENCES images
-   FOREIGN KEY(user_name) REFERENCES users
+   PRIMARY KEY(image_id, user_name)
 );
+
+/* Add the admin user to the user and admin tables */
+INSERT INTO users VALUES('admin','admin',null);
+INSERT INTO admin VALUES('admin','admin',null);
 
 commit;

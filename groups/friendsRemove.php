@@ -44,9 +44,7 @@ if(isset($_SESSION['added']) && $_SESSION['added'] == 'added'){
       <label for="group_name">Friend's Username</label>
       <input type="text" class="form-control" name="user_name" placeholder="" required autofocus>
       <br></br>
-
-    <br></br>
-    <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Remove</button>
+    <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Remove Friend</button>
   </form>
 </div>
 

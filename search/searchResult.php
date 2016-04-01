@@ -73,21 +73,7 @@ require_once "../homepage.php";
       ?>
       </form>
     </div>
-
-    <div class="span2">
-      <div class="btn-group">
-        <a class="btn dropdown-toggle btn-info" style="width:200px; height=50px" data-toggle="dropdown" href="#"> Action
-        <span class="icon-cog icon-white"></span><span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="update.php"><span class="icon-wrench"></span> Update Images</a></li>
-          <li><a href="delete.php"><span class="icon-trash"></span> Delete Images</a></li>
-                  </ul>
-      </div>
-
-
-      </div>
-      </div>
+    </div>
 
 </div>
 </div>

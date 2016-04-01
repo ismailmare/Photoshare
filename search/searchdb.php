@@ -64,19 +64,30 @@ else{
   				  FROM image_views
   				  GROUP BY image_id
                   ORDER BY views DESC)
-			WHERE ROWNUM <= 5';
+			WHERE ROWNUM <= 5 AND image_id in (SELECT i.photo_id
+												FROM images i
+												WHERE ((i.permitted = 1)
+													  OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
+													  OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted
+													  IN (SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) ))';
 	}
 }
 
+
+// Put the photo_ids into a one-dimensional array to be sent
+// to the search result page
 $resultArray = $newDB->executeStatementAlt($sql);
 $photo_id_array = array();
 foreach($resultArray as $key => $value){
 	array_push($photo_id_array, $value[0]);
 }
+
+// If empty return to search page with warning of no results
 if(!empty($photo_id_array)){
 	$_SESSION['search_result'] = $photo_id_array;
 	header("Location: searchResult.php");
 }
+// Otherwise, go to search result page with images
 else{
 	$_SESSION['search_result'] = "empty"; 
 	header("Location: search.php");

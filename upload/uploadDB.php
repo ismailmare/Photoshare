@@ -58,11 +58,23 @@ if(isset($_FILES['images'])){
 	}
 }
 
+// Rebuild the indexes after uploading/updating images
+$rebuild_place = 'ALTER INDEX place_index REBUILD';
+$rebuild_descrip = 'ALTER INDEX descrip_index REBUILD';
+$rebuild_subject = 'ALTER INDEX subject_index REBUILD';
+
+$newDB->executeStatement($rebuild_place);
+$newDB->executeStatement($rebuild_descrip);
+$newDB->executeStatement($rebuild_subject);
 
 // Close this connection
 $newDB->disconnect();
+
+// Jump to upload page and report success
 $_SESSION["success"]='successuploaded';
 header("Location: uploadForm.php");
+
+
 // This function inserts the image and it's descriptive information into the database
 function insertImage($conn, $photo_id, $owner_name, $descriptive_info, $thumbnail, $photo){
 	$photo_blob = oci_new_descriptor($conn, OCI_D_LOB);

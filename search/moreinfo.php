@@ -25,14 +25,13 @@ $stmt6 = oci_parse ($conn, $description);
 
 // Check if the user has viewed the photo before
 $image_viewed = 'SELECT * FROM image_views WHERE user_name = \''.$user.'\' and image_id = \''.$photo_id.'\'';
-$stid = oci_parse($conn, $image_viewed);
-$res = oci_execute($stid);
+$res = $newDB->executeStatement($image_viewed);
 if(empty($res)){
   // Insert a view for this user with this photo
-  $image_view = 'INSERT INTO image_views (image_id, user_name) VALUES (:photo_id, :user)';
+  $image_view = 'INSERT INTO image_views (image_id, user_name) VALUES (:photo_id, :user_name)';
   $stid = oci_parse($conn, $image_view);
   oci_bind_by_name($stid, ':photo_id', $photo_id);
-  oci_bind_by_name($stid, ':user', $user);
+  oci_bind_by_name($stid, ':user_name', $user);
 
   $res = oci_execute($stid, OCI_DEFAULT);
   oci_commit($conn);

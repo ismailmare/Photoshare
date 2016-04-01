@@ -51,7 +51,7 @@ if(isset($_SESSION['added']) && $_SESSION['added'] == 'added'){
       <label><input type="checkbox">More Friends</label>
       </div>
     <br></br>
-    <button type="submit" class="btn btn-default" style="width:10%; text-align:left;">Create</button>
+    <button type="submit" class="btn btn-default" style="width:10%;">Add Friend</button>
   </form>
 </div>
 
