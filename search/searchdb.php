@@ -3,12 +3,23 @@
 session_start();
 require_once('../setup.php');
 
+// Get search criteria
 $user = $_SESSION['user'];
 $start_date = $_POST['start_date'];
 $end_date = $_POST['end_date'];
 $order = $_POST['searchby'];
 $keywords = $_POST['keywords'];
 $keywords = str_replace(' ','&',$_POST['keywords']);
+
+// Rebuild the indexes before searching
+$rebuild_place = 'ALTER INDEX place_index REBUILD';
+$rebuild_descrip = 'ALTER INDEX descrip_index REBUILD';
+$rebuild_subject = 'ALTER INDEX subject_index REBUILD';
+
+$newDB->executeStatement($rebuild_place);
+$newDB->executeStatement($rebuild_descrip);
+$newDB->executeStatement($rebuild_subject);
+
 if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	// If the user has enter entered keywords
 	$search_cond = '';

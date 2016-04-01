@@ -33,6 +33,31 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
     });
   </script>
 
+  <script>
+    function topfive()
+    {
+      (document.getElementById('datepicker_s')).value="";
+      (document.getElementById('datepicker_e')).value="";
+      (document.getElementById('keywords')).value="";
+    }
+
+    function validateForm()
+    {
+      var keywords = document.getElementById('keywords');
+      var datepicker_s = document.getElementById('datepicker_s');
+      var datepicker_e = document.getElementById('datepicker_e');
+      var topfive = document.getElementById('top-five');
+
+      if(topfive.checked && (keywords.value != "" || datepicker_s.value != "" || datepicker_e.value != "")) {
+        alert('Cannot enter keywords or dates when searching for top five photos.');
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+  </script>
+
   <title>Photo Share - Search Image</title>
 </head>
 
@@ -43,12 +68,12 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
       <div class="panel-heading">Search For Pictures</div>
       <div class="panel-body">
 
-  	  <form action="searchdb.php" method="POST" name="searchform" enctype="multipart/form-data">
+  	  <form action="searchdb.php" method="POST" name="searchform" enctype="multipart/form-data" onsubmit = "return validateForm()">
         <div class="form-group">
         <h1 class="form-signin-heading"></h1>
         <div class="input-group input-group-lg">
           <span class="input-group-addon">Keyword(s):&nbsp&nbsp</span>
-          <input type="text" class="form-control" placeholder="Ex: greatday" name="keywords">
+          <input type="text" class="form-control" placeholder="Ex: greatday" name="keywords" id="keywords">
         </div>
       </div>
         <div class="form-group">
@@ -65,7 +90,7 @@ if(isset($_SESSION['search_result']) && $_SESSION['search_result'] == 'empty'){
         <input type="radio" name="searchby" value="most_recent">Recent First
         <input type="radio" name="searchby" value="oldest"> Oldest First
         <input type="radio" name="searchby" value="default" checked> None
-        <input type="radio" name="searchby" value="topfive"> Top Five Most Popular Images
+        <input type="radio" name="searchby" value="topfive" id="top-five" onclick="topfive();"> Top Five Most Popular Images
         </div>
         <button class="btn btn-lg btn-primary" type="submit">Search</button>
       </form>

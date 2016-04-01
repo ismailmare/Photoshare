@@ -53,19 +53,8 @@ if(isset($_FILES['images'])){
 
 		// Insert the image into the database
 		insertImage($newDB->getConnection(), $uniq_photo_id, $username, $descriptive_info, file_get_contents($thumbnail_blob), file_get_contents($_FILES['images']['tmp_name'][$key]));
-
-		//imagedestroy($thumbnail_blob);
 	}
 }
-
-// Rebuild the indexes after uploading/updating images
-$rebuild_place = 'ALTER INDEX place_index REBUILD';
-$rebuild_descrip = 'ALTER INDEX descrip_index REBUILD';
-$rebuild_subject = 'ALTER INDEX subject_index REBUILD';
-
-$newDB->executeStatement($rebuild_place);
-$newDB->executeStatement($rebuild_descrip);
-$newDB->executeStatement($rebuild_subject);
 
 // Close this connection
 $newDB->disconnect();

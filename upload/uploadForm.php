@@ -45,7 +45,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   function hide() {
     var groupID = document.getElementById('groupID')
     groupID.style.display = 'none';
-    groupID.value=""
+    groupID.value="";
     groupID.removeAttribute("required");
   }
 
@@ -53,7 +53,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   {
     var image_date = document.getElementById('datepicker').value;
     if(validDate(image_date)) {
-      return true; 
+      return true;
     }
     else{
       alert("Invalid Date Format!");
