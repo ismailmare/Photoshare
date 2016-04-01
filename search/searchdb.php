@@ -3,14 +3,24 @@
 session_start();
 require_once('../setup.php');
 
+// Get search criteria
 $user = $_SESSION['user'];
 $start_date = $_POST['start_date'];
 $end_date = $_POST['end_date'];
 $order = $_POST['searchby'];
 $keywords = $_POST['keywords'];
 $keywords = str_replace(' ','&',$_POST['keywords']);
-if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){	
-	
+
+// Rebuild the indexes before searching
+$rebuild_place = 'ALTER INDEX place_index REBUILD';
+$rebuild_descrip = 'ALTER INDEX descrip_index REBUILD';
+$rebuild_subject = 'ALTER INDEX subject_index REBUILD';
+
+$newDB->executeStatement($rebuild_place);
+$newDB->executeStatement($rebuild_descrip);
+$newDB->executeStatement($rebuild_subject);
+
+if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	// If the user has enter entered keywords
 	$search_cond = '';
 	if(!empty($keywords)) {
@@ -36,7 +46,7 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 					OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted IN 
 					(SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) )';
 	
-	// if the user has not specified an ordering to the search
+	// if the user has not specified an ordering to the search (DESC for highest rank first)
 	if($order == 'default' and !empty($keywords)) {
 		$search_cond .= ' ORDER BY (RANK() OVER (ORDER BY(6*SCORE(1)) + 3*SCORE(2) + SCORE(3))) DESC';
 	}
@@ -51,23 +61,46 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	else {
 		$search_cond .= ' ORDER BY i.timing ASC';
 	}
-	
+
 	$sql = 'SELECT i.photo_id
 			FROM images i 
 			WHERE '.$search_cond;
-	
-	$resultArray = $newDB->executeStatementAlt($sql);
-	$photo_id_array = array();
-	foreach($resultArray as $key => $value){
-		array_push($photo_id_array, $value[0]);
+
+}
+
+else{
+	if($order == 'topfive'){
+	$sql = 'SELECT image_id
+			FROM (SELECT image_id, COUNT(*) AS views 
+  				  FROM image_views
+  				  GROUP BY image_id
+                  ORDER BY views DESC)
+			WHERE ROWNUM <= 5 AND image_id in (SELECT i.photo_id
+												FROM images i
+												WHERE ((i.permitted = 1)
+													  OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
+													  OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted
+													  IN (SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) ))';
 	}
-	if(!empty($photo_id_array)){
-		$_SESSION['search_result'] = $photo_id_array;
-		header("Location: searchResult.php");
-	}
-	else{
-		$_SESSION['search_result'] = "empty"; 
-		header("Location: search.php");
-	}
+}
+
+
+// Put the photo_ids into a one-dimensional array to be sent
+// to the search result page
+$resultArray = $newDB->executeStatementAlt($sql);
+$photo_id_array = array();
+foreach($resultArray as $key => $value){
+	array_push($photo_id_array, $value[0]);
+}
+
+// If empty return to search page with warning of no results
+if(!empty($photo_id_array)){
+	$_SESSION['search_result'] = $photo_id_array;
+	header("Location: searchResult.php");
+}
+// Otherwise, go to search result page with images
+else{
+	$_SESSION['search_result'] = "empty"; 
+	header("Location: search.php");
 }
 ?>

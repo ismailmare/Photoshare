@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
       integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
-<body background="/~imare/include/images/bgimage.jpg">
+<body background="./include/images/bgimage.jpg">
   <div class="container-fluid">
   <div class="jumbotron" style="background:rgba(0, 0, 0, 0);">
     <!--<h1 class="col-md-6 col-md-offset-4" style="color:white;">Photo Share</h1>--> 

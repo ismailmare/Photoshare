@@ -1,23 +1,28 @@
 <?php
 
-        session_start();
-        require_once "function.php";
+session_start();
+require_once "function.php";
 
-        if (isset($_SESSION['user'])){
-                $user = $_SESSION['user'];
-                $userstr = " ($user)";
-        }
-        else{
-          header('Location: http://consort.cs.ualberta.ca/~imare/usermanagement/login.php');
-        }
+if (isset($_SESSION['user'])){
+        $user = $_SESSION['user'];
+        $userstr = " ($user)";
+}
+else{
+  if(basename($_SERVER['PHP_SELF']) == 'profile.php'){
+    header('Location: ./usermanagement/login.php');
+  }
+  else{
+    header('Location: ../usermanagement/login.php');
+  }
+}
 
-        echo '<div class="container">
-		            <div style="float:left;">
-                <div class="alert alert-info" style="width:8%; text-align:left; z-index:-1;position:absolute; top:2px; left:2px;">
-              	<strong>Admin: </strong>'.$user.' 
-         	      </div>
-		            </div>
-		          </div>';	
+echo '<div class="container">
+        <div style="float:left;">
+        <div class="alert alert-info" style="width:8%; text-align:left; z-index:-1;position:absolute; top:2px; left:2px;">
+      	<strong>Admin: </strong>'.$user.' 
+ 	      </div>
+        </div>
+      </div>';	
 ?>
 
 <!DOCTYPE html>
@@ -37,14 +42,15 @@
   integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
   <!-- CSS for navigation bars -->
-  <link rel="stylesheet" href="include/css/nav.css">
+  <link rel="stylesheet" href="include/css/nav.css"/>
+  <!--<link rel="stylesheet" type="text/css" href="/include/css/background.css"/>-->
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
   integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
-<body role="document" background="/~imare/include/images/bgimage.jpg">
+<body role="document">
   <div class="container theme-showcase" role="main">
     <nav class="navbar navbar-inverse">
     <div class="container">

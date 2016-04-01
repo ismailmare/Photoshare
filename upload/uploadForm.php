@@ -15,15 +15,8 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
         <strong>Success!</strong> Picture(s) Uploaded.
         </div>
         </center>';
-
-        unset($_SESSION['success']);
+  unset($_SESSION['success']);
 }
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +45,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   function hide() {
     var groupID = document.getElementById('groupID')
     groupID.style.display = 'none';
-    groupID.value=""
+    groupID.value="";
     groupID.removeAttribute("required");
   }
 
@@ -60,7 +53,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   {
     var image_date = document.getElementById('datepicker').value;
     if(validDate(image_date)) {
-      return true; 
+      return true;
     }
     else{
       alert("Invalid Date Format!");
@@ -73,7 +66,7 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successuploaded'){
   <title>Photo Share - Upload Images</title>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <div class="container">
     <div class="panel-group">
       <div class="panel panel-primary">

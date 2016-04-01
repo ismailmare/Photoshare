@@ -35,6 +35,7 @@ $descriptive_info = array($subject, $place, $date, $description, $groupID);
 
 $valid_formats = array("jpeg","jpg","gif");
 
+// Code based from http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
 if(isset($_FILES['images'])){
 	foreach($_FILES['images']['tmp_name'] as $key => $tmp_name){
 		$file_name = $key.$_FILES['images']['name'][$key];
@@ -52,16 +53,17 @@ if(isset($_FILES['images'])){
 
 		// Insert the image into the database
 		insertImage($newDB->getConnection(), $uniq_photo_id, $username, $descriptive_info, file_get_contents($thumbnail_blob), file_get_contents($_FILES['images']['tmp_name'][$key]));
-
-		//imagedestroy($thumbnail_blob);
 	}
 }
 
-
 // Close this connection
 $newDB->disconnect();
+
+// Jump to upload page and report success
 $_SESSION["success"]='successuploaded';
 header("Location: uploadForm.php");
+
+
 // This function inserts the image and it's descriptive information into the database
 function insertImage($conn, $photo_id, $owner_name, $descriptive_info, $thumbnail, $photo){
 	$photo_blob = oci_new_descriptor($conn, OCI_D_LOB);

@@ -45,7 +45,7 @@ class DB{
 	    $stid = oci_parse($this->conn, $sql_statement);
 
 	    //Execute a statement returned from oci_parse()
-	    $res = oci_execute($stid);
+	    $res = oci_execute($stid, OCI_COMMIT_ON_SUCCESS);
         
         //if error, retrieve the error using the oci_error() function & output an error message
 	    if (!$res) {

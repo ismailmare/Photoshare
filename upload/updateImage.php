@@ -70,7 +70,7 @@ if(empty($_POST['check_list1'])) {
     <title>PhotoShare - Update Images</title>
   </head>
 
-  <body>
+  <body background = "../include/images/bgimage.jpg">
     <div class="container">
       <div class="panel-group">
         <div class="panel panel-primary">

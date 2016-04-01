@@ -1,23 +1,28 @@
 <?php
 
-        session_start();
-        require_once "function.php";
+session_start();
+require_once "function.php";
 
-        if (isset($_SESSION['user'])){
-                $user = $_SESSION['user'];
-                $userstr = " ($user)";
-        }
-        else {
-          header('Location: http://consort.cs.ualberta.ca/~imare/usermanagement/login.php');
-        }
+if (isset($_SESSION['user'])){
+        $user = $_SESSION['user'];
+        $userstr = " ($user)";
+}
+else {
+  if(basename($_SERVER['PHP_SELF']) == 'profile.php'){
+    header('Location: ./usermanagement/login.php');
+  }
+  else{
+    header('Location: ../usermanagement/login.php');
+  }
+}
 
-        echo '<div class="container">
-		            <div style="float:left;">
-                  <div class="alert alert-info" style="width:10%; text-align:left; z-index:-1;position:absolute; top:2px; left:2px;">
-                  <strong>User: </strong>'.$user.' 
-         	        </div>
-		            </div>
-		          </div>';
+echo '<div class="container">
+        <div style="float:left;">
+          <div class="alert alert-info" style="width:10%; text-align:left; z-index:-1;position:absolute; top:2px; left:2px;">
+          <strong>User: </strong>'.$user.' 
+ 	        </div>
+        </div>
+      </div>';
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +42,14 @@
 
   <!-- CSS for navigation bars -->
   <link rel="stylesheet" href="include/css/nav.css">
+  <link rel="stylesheet" href="include/css/background.css">
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
   integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
-<body role="document" background="/~imare/include/images/bgimage.jpg">
+<body role="document">
   <div class="container theme-showcase" role="main">
     <nav class="navbar navbar-inverse">
       <div class="container">
@@ -65,7 +71,7 @@
             <li><a href="http://consort.cs.ualberta.ca/~imare/search/search.php">Search</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/upload/uploadForm.php">Upload</a></li>
             <li><a href="http://consort.cs.ualberta.ca/~imare/usermanagement/logout.php">Logout</a></li>
-      	    <li><a href="http://consort.cs.ualberta.ca/~imare/documentation/help.php">Help/a></li>
+      	    <li><a href="http://consort.cs.ualberta.ca/~imare/documentation/help.php">Help</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </div>

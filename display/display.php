@@ -58,14 +58,10 @@ oci_execute($stmt2);
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <br><br>
   <div class="container-fluid well span6" style="width:1500px; left:5px;">
   <div class="row-fluid">
-    <div class="span2" >
-    <img src="" class="img-circle">
-    </div>
-
     <div class="span8" style background="grey">
       <h2>Photos</h3>
       <br></br>

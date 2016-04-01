@@ -1,4 +1,14 @@
 <?php
+/*
+this file allows users to delete images. All the users images are displayed, and a little checkbox is 
+printed. All the images the user checks off will be removed from the database.
+
+Calls deleteDB.php
+
+
+
+
+*/
 require_once "../setup.php";
 require_once "../homepage.php";
 
@@ -49,7 +59,7 @@ oci_execute($stmt2);
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
   <br><br>
   <div class="container-fluid well span6" style="width:1500px; left:5px;">
     <div class="row-fluid">

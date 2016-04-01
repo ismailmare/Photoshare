@@ -4,6 +4,7 @@ require_once "../setup.php";
 require_once "../homepage.php";
 
 session_start();
+$conn = $newDB->getConnection();
 
 
 $user = $_SESSION['user'];
@@ -14,8 +15,21 @@ $subject = 'SELECT subject FROM images WHERE photo_id = '.$photo_id.'';
 $place = 'SELECT place FROM images WHERE photo_id = '.$photo_id.'';
 $when= 'SELECT timing FROM images WHERE photo_id = '.$photo_id.'';
 $description = 'SELECT description FROM images WHERE photo_id = '.$photo_id.'';
+
+// Check if the user has viewed the photo before
+$image_viewed = 'SELECT * FROM image_views WHERE user_name = \''.$user.'\' and image_id = \''.$photo_id.'\'';
+$res = $newDB->executeStatement($image_viewed);
+if(empty($res)){
+  // Insert a view for this user with this photo
+  $image_view = 'INSERT INTO image_views (image_id, user_name) VALUES (:photo_id, :user_name)';
+  $stid = oci_parse($conn, $image_view);
+  oci_bind_by_name($stid, ':photo_id', $photo_id);
+  oci_bind_by_name($stid, ':user_name', $user);
+
+  $res = oci_execute($stid, OCI_DEFAULT);
+  oci_commit($conn);
+}
 	
-$conn = $newDB->getConnection();
 $stmt1 = oci_parse ($conn, $photo);
 $stmt2 = oci_parse ($conn, $permitted);
 $stmt3 = oci_parse ($conn, $subject);
@@ -50,13 +64,10 @@ oci_execute($stmt6);
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body background = "../include/images/bgimage.jpg">
 <br><br>
   <div class="container-fluid well span6" style="width:100%; left:5px;">
     <div class="row-fluid">
-      <div class="span2" >
-      <img src="" class="img-circle">
-      </div>
 
       <div class="span8" style background="grey">
       <?php echo'<h2>Photo ID: '.$photo_id.'</h3>';?>
