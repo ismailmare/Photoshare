@@ -26,7 +26,7 @@ how to install our source code and website and how to use website, and take adva
 <head>
   <title>Photoshare-Photos-MoreInfo</title>
   <meta charset="utf-8">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -36,7 +36,7 @@ how to install our source code and website and how to use website, and take adva
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -82,7 +82,7 @@ how to install our source code and website and how to use website, and take adva
 <img src="391ScreenShots/error.png" alt="Mountain View" style="width:1000px;height:400px;">
 <h4>If  &bull; Passwords do not match &bull; User name is too short / password to short &bull; Email is invalid &bull; Phone number is invalid The user will be displayed an error message and be placed back onto this page</h4>
 <br><br>
-<img src="391ScreenShots/profile.png" alt="Mountain View" style="width:1000px;height:400px;">
+<img src="391ScreenShots/Profile.png" alt="Mountain View" style="width:1000px;height:400px;">
 <h4>If the user signs is or registers successfully, the profile page will be called</h4>
 <br><br>
 <p>  .</p>
