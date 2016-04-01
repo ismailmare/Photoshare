@@ -27,19 +27,30 @@ if(isset($_SESSION['success']) && $_SESSION['success'] == 'successupdate'){
   unset($_SESSION['success']);
 }
 
-$user = $_SESSION['user'];
-$image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
-$sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
-
-
 $conn = $newDB->getConnection();
-$stmt = oci_parse ($conn, $image);
-oci_bind_by_name($stmt, ':Owner_name', $user);
-oci_execute($stmt);
+$user = $_SESSION['user'];
+if($user == 'admin'){
+  $image =  'SELECT thumbnail FROM images';
+  $sql = 'SELECT photo_id FROM images';
 
-$stmt2 = oci_parse ($conn, $sql);
-oci_bind_by_name($stmt2, ':Owner_name', $user);
-oci_execute($stmt2);
+  $stmt = oci_parse($conn, $image);
+  oci_execute($stmt);
+
+  $stmt2 = oci_parse($conn, $sql);
+  oci_execute($stmt2);
+}
+else{
+  $image = 'SELECT thumbnail FROM images WHERE owner_name = :Owner_name';
+  $sql = 'SELECT photo_id FROM images WHERE owner_name = :Owner_name';
+
+  $stmt = oci_parse ($conn, $image);
+  oci_bind_by_name($stmt, ':Owner_name', $user);
+  oci_execute($stmt);
+
+  $stmt2 = oci_parse ($conn, $sql);
+  oci_bind_by_name($stmt2, ':Owner_name', $user);
+  oci_execute($stmt2);
+}
 ?>
 
 

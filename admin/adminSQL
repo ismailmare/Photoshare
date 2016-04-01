@@ -1,4 +1,0 @@
-SELECT photo_id,owner_name,timing
-FROM images
-GROUP BY CUBE (owner_name,subject,timing);
-

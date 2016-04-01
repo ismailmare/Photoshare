@@ -41,10 +41,12 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 	// - if image is image is public, then user can view it
 	// - if the image is private and the user is the owner, then the user can view it
 	// - if the the user is part of a group with group_id == i.permitted, then the user can view it
+	if($user != 'admin'){
 	$search_cond .= 'AND ( (i.permitted = 1) 
 					OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
 					OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted IN 
 					(SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) )';
+	}
 	
 	// if the user has not specified an ordering to the search (DESC for highest rank first)
 	if($order == 'default' and !empty($keywords)) {
@@ -68,9 +70,18 @@ if((!empty($start_date) && !empty($end_date)) || !empty($keywords)){
 
 }
 
-else{
-	if($order == 'topfive'){
-	$sql = 'SELECT image_id
+else if($order == 'topfive'){
+
+	if($user == 'admin'){
+		$sql = 'SELECT image_id
+				FROM (SELECT image_id, COUNT(*) AS views 
+  				  	  FROM image_views
+  				      GROUP BY image_id
+                      ORDER BY views DESC)
+				WHERE ROWNUM <= 5';
+	}
+	else{
+		$sql = 'SELECT image_id
 			FROM (SELECT image_id, COUNT(*) AS views 
   				  FROM image_views
   				  GROUP BY image_id
@@ -81,6 +92,35 @@ else{
 													  OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
 													  OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted
 													  IN (SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\')) ))';
+	}
+}
+
+else{
+	$search_cond = '';
+	if($order == 'most_recent'){
+		$search_cond .= ' ORDER BY i.timing DESC';
+	}
+
+	else if ($order == 'oldest'){
+		$search_cond .= ' ORDER BY i.timing ASC';
+	}
+
+	else{
+		$search_cond .= '';
+	}
+
+	if($user == 'admin'){
+		$sql = 'SELECT i.photo_id
+				FROM images i' .$search_cond;
+	}
+	else{
+		$sql = 'SELECT i.photo_id
+				FROM images i
+				WHERE (i.permitted = 1) 
+					OR (i.permitted = 2 AND i.owner_name = \''.$user.'\')
+					OR (i.permitted <> 1 AND i.permitted <> 2 AND i.permitted IN 
+					(SELECT group_id FROM group_lists WHERE friend_id = \''.$user.'\'))'
+				.$search_cond;
 	}
 }
 
